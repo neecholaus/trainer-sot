@@ -10,8 +10,8 @@ import (
 
 func CreateDBConnection() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		exists := db.CreateDbConnection()
-		if !exists {
+		_, err := db.CreateDbConnection()
+		if err != nil {
 			c.Abort()
 			c.String(500, "Failed to establish DB connection.")
 			return
