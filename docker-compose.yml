@@ -1,0 +1,17 @@
+services:
+  go:
+    image: golang:1.19-buster
+    working_dir: /var/opt/trainer-sot
+    volumes:
+    - .:/var/opt/trainer-sot
+    command: go run .
+    ports:
+    - 80:80
+  postgres:
+    image: postgres:15.1
+    environment:
+    - POSTGRES_USER=local
+    - POSTGRES_PASSWORD=local
+    - POSTGRES_DB=local
+    ports:
+    - 5432:5432
