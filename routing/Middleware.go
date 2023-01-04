@@ -4,8 +4,22 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
+	"nicholas/trainer-sot/db"
 	"strings"
 )
+
+func CreateDBConnection() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		exists := db.CreateDbConnection()
+		if !exists {
+			c.Abort()
+			c.String(500, "Failed to establish DB connection.")
+			return
+		}
+
+		c.Next()
+	}
+}
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -25,7 +39,7 @@ func Auth() gin.HandlerFunc {
 			claims := TrainerAuthJwtClaims{}
 
 			// todo - replace secret key with env value
-			token, err := jwt.ParseWithClaims(rawToken, &claims, func(token *jwt.Token) (interface{}, error) {
+			_, err := jwt.ParseWithClaims(rawToken, &claims, func(token *jwt.Token) (interface{}, error) {
 				return []byte("dummy-secret-key"), nil
 			})
 			if err != nil {
@@ -37,7 +51,6 @@ func Auth() gin.HandlerFunc {
 				return
 			}
 
-			fmt.Printf("token: %s\n", token.Claims)
 			c.Set("email", claims.Email)
 			c.Set("sessionExpires", claims.ExpiresAt)
 		}

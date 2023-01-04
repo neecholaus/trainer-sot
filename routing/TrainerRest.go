@@ -56,8 +56,6 @@ func signInRest(c *gin.Context) {
 		return
 	}
 
-	fmt.Printf("token: %s\n", signed)
-
 	c.Header("Authorization", fmt.Sprintf("Bearer %s", signed))
 	c.JSON(200, gin.H{
 		"message": "You have been signed in.",
