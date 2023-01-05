@@ -1,17 +1,23 @@
 package routing
 
-import "github.com/gin-gonic/gin"
+import (
+	"nicholas/trainer-sot/routing/controllers"
+
+	"github.com/gin-gonic/gin"
+)
 
 func RegisterRoutes(c *gin.Engine) {
 	// Trainer
 	trainerNonAuthGroup := c.Group("/trainer")
 	{
-		trainerNonAuthGroup.GET("/sign-in", signIn)
-		trainerNonAuthGroup.POST("/sign-in", signInRest)
+		trainerNonAuthGroup.GET("/sign-up/:inviteKey", nil)
+		trainerNonAuthGroup.POST("/sign-up", controllers.SignUpRest)
+		trainerNonAuthGroup.GET("/sign-in", controllers.SignIn)
+		trainerNonAuthGroup.POST("/sign-in", controllers.SignInRest)
 	}
 	// Trainer Authed
 	trainerAuthGroup := c.Group("/trainer", Auth())
 	{
-		trainerAuthGroup.GET("/", home)
+		trainerAuthGroup.GET("/", controllers.Home)
 	}
 }

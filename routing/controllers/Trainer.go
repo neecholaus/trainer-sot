@@ -1,12 +1,12 @@
-package routing
+package controllers
 
 import "github.com/gin-gonic/gin"
 
-func signIn(c *gin.Context) {
+func SignIn(c *gin.Context) {
 	c.String(200, "This will be your login page.")
 }
 
-func home(c *gin.Context) {
+func Home(c *gin.Context) {
 	email, _ := c.Get("email")
 	exp, _ := c.Get("sessionExpires")
 	c.JSON(200, gin.H{

@@ -2,10 +2,12 @@ package routing
 
 import (
 	"fmt"
+	"nicholas/trainer-sot/db"
+	"nicholas/trainer-sot/routing/controllers"
+	"strings"
+
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
-	"nicholas/trainer-sot/db"
-	"strings"
 )
 
 func CreateDBConnection() gin.HandlerFunc {
@@ -36,7 +38,7 @@ func Auth() gin.HandlerFunc {
 		if auth != "" {
 			rawToken := strings.Split(auth, " ")[1]
 
-			claims := TrainerAuthJwtClaims{}
+			claims := controllers.TrainerAuthJwtClaims{}
 
 			// todo - replace secret key with env value
 			_, err := jwt.ParseWithClaims(rawToken, &claims, func(token *jwt.Token) (interface{}, error) {
