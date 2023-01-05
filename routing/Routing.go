@@ -10,7 +10,7 @@ func RegisterRoutes(c *gin.Engine) {
 	// Trainer
 	trainerNonAuthGroup := c.Group("/trainer")
 	{
-		trainerNonAuthGroup.GET("/sign-up/:inviteKey", nil)
+		trainerNonAuthGroup.GET("/sign-up", controllers.SignUp)
 		trainerNonAuthGroup.POST("/sign-up", controllers.SignUpRest)
 		trainerNonAuthGroup.GET("/sign-in", controllers.SignIn)
 		trainerNonAuthGroup.POST("/sign-in", controllers.SignInRest)

@@ -18,6 +18,9 @@ func main() {
 
 	server := gin.Default()
 
+	server.LoadHTMLGlob("./resources/views/**/*.html")
+	server.Static("/public", "./resources/public")
+
 	// Db connection created for each request
 	server.Use(routing.CreateDBConnection())
 

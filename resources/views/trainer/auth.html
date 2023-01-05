@@ -1,0 +1,23 @@
+{{ define "trainer/auth.html" }}
+
+{{ template "layouts/document-head.html" .}}
+
+<div class="font-sans w-full md:w-1/6 mx-auto drop-shadow-md bg-white rounded-md px-5 py-11">
+    <h1 class="font-bold text-xl mb-6 text-slate-600">Sign Up</h1>
+    <form>
+        <label class="block">
+            <span class="block text-sm font-medium text-slate-500">Email</span>
+            <input name="email" autocomplete="off" class="px-3 py-2 border border-slate-300 placeholder-slate-400 rounded-md text-slate-500 w-full focus:outline-sky-500" />
+            <span class="block text-sm font-medium text-slate-500 mt-6">Phone</span>
+            <input name="password" autocomplete="off" class="px-3 py-2 border border-slate-300 placeholder-slate-400 rounded-md text-slate-500 w-full focus:outline-sky-500" />
+
+            <div class="mt-4 text-right">
+                <button type="button" class="bg-sky-400 px-4 py-2 rounded-full hover:bg-sky-500 text-white">Start</button>
+            </div>
+        </label>
+    </form>
+</div>
+
+{{ template "layouts/document-footer.html" .}}
+
+{{ end }}

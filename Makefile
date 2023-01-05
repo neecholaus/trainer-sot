@@ -16,3 +16,6 @@ ensure_tailwind_cli:
 	else\
 		echo "Tailwind is already installed.";\
 	fi;
+
+tailwind_watch:
+	@./tailwindcss --watch -o ./resources/public/css/styles.css

@@ -1,6 +1,15 @@
 package controllers
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"net/http"
+)
+
+func SignUp(c *gin.Context) {
+	c.HTML(http.StatusOK, "trainer/auth.html", gin.H{
+		"title": "Main website",
+	})
+}
 
 func SignIn(c *gin.Context) {
 	c.String(200, "This will be your login page.")
