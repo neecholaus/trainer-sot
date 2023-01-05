@@ -113,15 +113,48 @@ func SignInRest(c *gin.Context) {
 		return
 	}
 
-	if body.Email == "" {
+	if body.Email == "" || body.Password == "" {
 		fmt.Println("email was not provided in sign up request body")
 		c.JSON(400, gin.H{
-			"error": "Email was not provided",
+			"error": "Missing required fields.",
 		})
 		return
 	}
 
-	// todo - validate credentials before making token
+	// Validate credentials
+	var trainer models.Trainer
+	res := db.Db.Model(&models.Trainer{}).Where("email = ?", body.Email).Limit(1).Find(&trainer)
+	var reason string
+	if res.RowsAffected < 1 {
+		reason = "Record not found."
+	} else if res.Error != nil {
+		reason = "Error thrown"
+	}
+	// todo - maybe different approach, return bad credentials if not found, error only if explicitly an error
+	if reason != "" {
+		fmt.Printf("could not find account on sign in attempt: %s\n", body.Email)
+		c.JSON(400, gin.H{
+			"error":  "Could not find an account using that email.",
+			"reason": reason,
+			"data": gin.H{
+				"email": body.Email,
+			},
+		})
+		return
+	}
+
+	err = bcrypt.CompareHashAndPassword([]byte(trainer.Password), []byte(body.Password))
+	if err != nil {
+		fmt.Printf("password does not match on sign in attempt: %s\n", body.Email)
+		c.JSON(400, gin.H{
+			"error":  "Could not sign in.",
+			"reason": "Either the email or password is invalid.",
+			"data": gin.H{
+				"email": body.Email,
+			},
+		})
+		return
+	}
 
 	claims := TrainerAuthJwtClaims{
 		body.Email,
