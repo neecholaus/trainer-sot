@@ -2,21 +2,33 @@
 
 {{ template "layouts/document-head.html" .}}
 
-<div class="font-sans w-full max-w-prose mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
-    <h1 class="font-bold text-2xl mb-6 text-slate-800 dark:text-slate-200">Sign Up</h1>
-    <form>
-        <label class="block">
-            <span class="block text-sm dark:text-slate-400">Email</span>
-            <input name="email" autocomplete="off" class="input" />
-        </label>
-        <label class="block">
-            <span class="block text-sm dark:text-slate-400 mt-6">Password</span>
-            <input type="password" name="password" autocomplete="off" class="input" />
-        </label>
-
+<div class="divide-y divide-dashed font-sans w-full max-w-prose mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
+    <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-200">Sign Up</h1>
+    <form class="divide-y divide-dashed pt-5">
+        <div class="pb-6">
+            <div class="flex justify-between mb-6">
+                <label>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">First Name</span>
+                    <input type="text" name="firstName" autocomplete="off" class="input" />
+                </label>
+                <label>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">Last Name</span>
+                    <input type="text" name="lastName" autocomplete="off" class="input" />
+                </label>
+            </div>
+            <label>
+                <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
+                <input type="text" name="email" autocomplete="off" class="input" />
+            </label>
+            <label>
+                <span class="block text-sm text-slate-500 dark:text-slate-400 mt-6">Password</span>
+                <input type="password" name="password" autocomplete="off" class="input" />
+            </label>
+        </div>
+        
         <div class="flex justify-between">
             <div>
-                <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-400 mt-6">Already have an account?</a>
+                <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-500 mt-6">Already have an account?</a>
             </div>
             <div class="mt-4 text-right">
                 <button type="button" class="bg-sky-500 text-sky-100 hover:bg-sky-600 dark:bg-sky-600 px-8 py-2 rounded-full dark:hover:bg-sky-500 dark:text-sky-200 dark:hover:text-sky-100">Start</button>

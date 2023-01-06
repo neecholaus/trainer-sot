@@ -18,7 +18,7 @@ ensure_tailwind_cli:
 	fi;
 
 tailwind-watch-templates:
-	@./tailwindcss --watch -o ./resources/public/css/template-styles.css
+	@./tailwindcss --watch -c ./tailwind.config.js -o ./resources/public/css/template-styles.css
 
 tailwind-watch-components:
-	@./tailwindcss --watch -i ./resources/css/components.css -o ./resources/public/css/template-styles.css
+	@./tailwindcss --watch -i ./resources/css/components.css -o ./resources/public/css/component-styles.css
