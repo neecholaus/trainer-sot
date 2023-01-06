@@ -20,10 +20,8 @@ func SignIn(c *gin.Context) {
 
 func Home(c *gin.Context) {
 	email, _ := c.Get("email")
-	exp, _ := c.Get("sessionExpires")
-	c.JSON(200, gin.H{
-		"message":        "You are logged in as a trainer",
-		"email":          email,
-		"sessionExpires": exp,
+	c.HTML(http.StatusOK, "trainer/dashboard.html", gin.H{
+		"title": "Dashboard",
+		"email": email,
 	})
 }

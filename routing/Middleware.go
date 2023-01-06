@@ -25,7 +25,17 @@ func CreateDBConnection() gin.HandlerFunc {
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		auth := c.GetHeader("Authorization")
+		// Web
+		header := c.GetHeader("Authorization")
+		// Json (REST)
+		cookie, _ := c.Cookie("session")
+
+		var auth string
+		if header != "" {
+			auth = header
+		} else if cookie != "" {
+			auth = cookie
+		}
 
 		if auth == "" {
 			c.Abort()
@@ -48,7 +58,7 @@ func Auth() gin.HandlerFunc {
 				fmt.Printf("could not parse jwt token: %s", err)
 				c.Abort()
 				c.JSON(403, gin.H{
-					"error": "Could not parse the provided auth token",
+					"error": "Could not parse the provided header token",
 				})
 				return
 			}

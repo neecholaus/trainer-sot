@@ -78,6 +78,10 @@
             if (res.status == 200) {
                 // todo - redirect to dashboard
                 this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
+                document.cookie = `session=${res.headers.get('Authorization')};Max-Age=6000;path=/`;
+                setTimeout(() => {
+                    window.location = '/trainer';
+                }, 2000);
             } else {
                 this.#error = resBody.error;
             }
