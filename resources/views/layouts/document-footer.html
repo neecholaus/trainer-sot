@@ -1,9 +1,14 @@
 {{ define "layouts/document-footer.html" }}
 
 <script>
-    window.toggleDarkMode = function() {
+    window.toggleDarkMode = function(force) {
         const body = document.querySelector('body');
-        const isDarkMode = body.classList.contains('dark');
+        let isDarkMode = body.classList.contains('dark');
+
+        if (force && ['light', 'dark'].indexOf(force) > -1) {
+            isDarkMode = force;
+        }
+
 
         const lightModeClasses = [
             'bg-slate-100',
@@ -34,6 +39,7 @@
     }
 
     // todo - check local storage for dark mode setting
+    toggleDarkMode('light');
 </script>
 
 </body>
