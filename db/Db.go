@@ -2,14 +2,20 @@ package db
 
 import (
 	"fmt"
+	"nicholas/trainer-sot/db/models"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"nicholas/trainer-sot/db/models"
 )
 
 var Db *gorm.DB
 
 func CreateDbConnection() (*gorm.DB, error) {
+	if Db != nil {
+		fmt.Println("db connection already created")
+		return Db, nil
+	}
+
 	// todo - replace with env values
 	dsn := "host=postgres user=local password=local dbname=local port=5432 sslmode=disable TimeZone=UTC"
 
