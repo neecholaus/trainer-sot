@@ -1,5 +1,41 @@
 {{ define "layouts/document-footer.html" }}
 
+<script>
+    window.toggleDarkMode = function() {
+        const body = document.querySelector('body');
+        const isDarkMode = body.classList.contains('dark');
+
+        const lightModeClasses = [
+            'bg-slate-100',
+            'text-slate-800',
+        ];
+
+        const darkModeClasses = [
+            'dark',
+            'bg-gradient-to-r',
+            'from-slate-900',
+            'to-slate-800',
+            'text-white',
+        ];
+
+        for (let cssClass of [...lightModeClasses, ...darkModeClasses]) {
+            body.classList.remove(cssClass);
+        }
+
+        if (isDarkMode) {
+            for (let cssClass of lightModeClasses) {
+                body.classList.add(cssClass)
+            }
+        } else {
+            for (let cssClass of darkModeClasses) {
+                body.classList.add(cssClass)
+            }
+        }
+    }
+
+    // todo - check local storage for dark mode setting
+</script>
+
 </body>
 </html>
 
