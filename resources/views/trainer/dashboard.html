@@ -2,15 +2,30 @@
 
 {{ template "layouts/document-head.html" .}}
 
-<div id="Dashboard" class="dark:divide-slate-700 font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md mt-20">
-    <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-800 bg-yellow-400 p-5 rounded-t-lg">
-        <i class="fa fa-exclamation-triangle text-yellow-900 mr-3"></i>
-        <span class="text-yellow-900">Dashboard</span>
-    </h1>
+<div id="Dashboard" class="max-w-screen-2xl mx-auto drop-shadow-xl">
 
-    <div class="px-5 pt-2 pb-5 font-bold">
-        This page is under Construction.
+    <div class="flex justify-between flex-row flex-auto flex-shrink-0 bg-gray-50 text-gray-800">
+
+        <!-- Left Sidebar -->
+        <div class="fixed min-h-screen w-64 hidden lg:block bg-white">
+            <div class="flex flex-col min-h-screen">
+                <div class="px-4 py-10 grow-0 flex-none border-x bg-blue-400 border-blue-400">
+                    <h1 class="text-2xl font-bold">Trainer</h1>
+                </div>
+                <div class="p-4 grow border-x">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="min-h-screen w-full ml-64 ml-0 lg:ml-64 bg-white">
+            <div class="p-5">
+                <h1>TEST fds fsd fdjkslf jdsklaf dsjklfdja kfldjksla</h1>
+            </div>
+        </div>
     </div>
+
 </div>
 
 {{ template "layouts/document-footer.html" .}}

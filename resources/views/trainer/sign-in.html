@@ -77,11 +77,17 @@
 
             if (res.status == 200) {
                 // todo - redirect to dashboard
-                this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
+                this.#success = resBody.message + ` You will be redirected in (<span id="redirect-delay">3</span>).`;
                 document.cookie = `session=${res.headers.get('Authorization')};Max-Age=6000;path=/`;
-                setTimeout(() => {
-                    window.location = '/trainer';
-                }, 2000);
+                setInterval(() => {
+                    const delayDisplay = document.querySelector('#redirect-delay');
+                    const currentDelay = delayDisplay.textContent;
+                    const nextDelay = currentDelay - 1;
+                    delayDisplay.textContent = nextDelay;
+                    if (nextDelay < 1) {
+                        window.location = '/trainer';
+                    }
+                }, 1000)
             } else {
                 this.#error = resBody.error;
             }
