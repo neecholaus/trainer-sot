@@ -22,3 +22,30 @@
     dark:focus:border-slate-600
 }
 
+.simple-success-msg {
+    @apply
+        text-sm
+        rounded-md
+        px-4
+        py-2
+
+        bg-green-200
+        text-green-700
+
+        dark:bg-green-800
+        dark:text-green-200
+}
+
+.simple-error-msg {
+    @apply
+        text-sm
+        rounded-md
+        px-4
+        py-2
+
+        bg-red-200
+        text-red-700
+
+        dark:bg-red-800
+        dark:text-red-200
+}

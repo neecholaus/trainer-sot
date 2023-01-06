@@ -5,8 +5,8 @@
 <div id="SignUp" class="dark:divide-slate-700 font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
     <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-200">Sign Up</h1>
 
-    <div id="error-message" class="bg-red-200 text-red-700 dark:bg-red-800 dark:text-red-200 text-sm rounded-md px-4 py-2" style="display:none;"></div>
-    <div id="success-message" class="bg-green-200 text-green-700 dark:bg-green-800 dark:text-green-200 text-sm rounded-md px-4 py-2" style="display:none;"></div>
+    <div id="error-message" class="simple-error-msg" style="display:none;"></div>
+    <div id="success-message" class="simple-success-msg" style="display:none;"></div>
 
     <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
         <div class="pb-8">
@@ -35,7 +35,7 @@
                 <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-500 mt-6">Already have an account?</a>
             </div>
             <div class="mt-4 text-right">
-                <button type="button" id="submit" class="bg-sky-500 text-sky-100 hover:bg-sky-600 dark:bg-sky-600 px-8 py-2 rounded-full dark:hover:bg-sky-500 dark:text-sky-200 dark:hover:text-sky-100">
+                <button type="button" id="submit" class="bg-sky-500 text-white hover:bg-sky-600 dark:bg-sky-600 px-8 py-2 rounded-full dark:hover:bg-sky-500 dark:text-sky-200 dark:hover:text-sky-100">
                     <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
                     Start
                 </button>
@@ -107,7 +107,7 @@
 
             if (res.status == 200) {
                 // todo - improve login prompt (3,2,1 count down to redirect perhaps?)
-                this.#success = resBody.message + `<br/><br/>Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
+                this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
             } else {
                 this.#error = resBody.error;
             }

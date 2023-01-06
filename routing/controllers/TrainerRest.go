@@ -67,7 +67,7 @@ func SignUpRest(c *gin.Context) {
 	if res.RowsAffected > 0 {
 		fmt.Printf("sign up attempted for email that is already in use: %s\n", trainer.Email)
 		c.JSON(400, gin.H{
-			"error": "Account already exists with this email",
+			"error": "Account already exists with this email.",
 			"data": gin.H{
 				"email": trainer.Email,
 			},
@@ -86,12 +86,12 @@ func SignUpRest(c *gin.Context) {
 	if storedTrainer.Error != nil {
 		fmt.Println("error while storing new trainer sign up")
 		c.JSON(500, gin.H{
-			"error": "Could not store trainer",
+			"error": "Could not store trainer.",
 		})
 	}
 
 	c.JSON(200, gin.H{
-		"message": "Sign up was successful",
+		"message": "Sign up was successful.",
 	})
 }
 
