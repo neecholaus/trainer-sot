@@ -106,8 +106,8 @@
             const resBody = await res.json();
 
             if (res.status == 200) {
-                // todo - redirect to sign in or redirect to home
-                this.#success = resBody.message
+                // todo - improve login prompt (3,2,1 count down to redirect perhaps?)
+                this.#success = resBody.message + `<br/><br/>Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
             } else {
                 this.#error = resBody.error;
             }
@@ -132,6 +132,7 @@
         set #error(error) {
             this.#elements.errorMessage.textContent = error;
             if (error != '') {
+                this.#success = '';
                 this.#elements.errorMessage.style.display = 'block';
             } else {
                 this.#elements.errorMessage.style.display = 'none';
@@ -139,8 +140,9 @@
         }
 
         set #success(successMsg) {
-            this.#elements.successMessage.textContent = successMsg;
+            this.#elements.successMessage.innerHTML = successMsg;
             if (successMsg != '') {
+                this.#error = '';
                 this.#elements.successMessage.style.display = 'block';
             } else {
                 this.#elements.successMessage.style.display = 'none';
