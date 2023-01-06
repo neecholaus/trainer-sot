@@ -46,8 +46,8 @@
 
 <script>
     class SignUp {
-        #container = 'div#SignUp'
-        #elements = {
+        container = 'div#SignUp'
+        elements = {
             errorMessage: '#error-message',
             successMessage: '#success-message',
             inputs: {
@@ -60,37 +60,19 @@
         }
 
         constructor() {
-            this.#container = this.#getElement(this.#container);
-            this.#hydrateElements(this.#elements);
+            ElementHydrator.hydrate(this);
 
-            this.#elements.submitBtn.addEventListener('click', () => {
+            this.elements.submitBtn.addEventListener('click', () => {
                 this.#handleSubmit();
             })
-        }
-
-        #hydrateElements(mappings) {
-            for (let key in mappings) {
-                if (typeof(mappings[key]) === 'object') {
-                    this.#hydrateElements(mappings[key])
-                } else {
-                    mappings[key] = this.#getElement(mappings[key]);
-                }
-            }
-        }
-
-        #getElement(selector) {
-            if (typeof(this.#container) !== 'string') {
-                return this.#container.querySelector(selector);
-            }
-            return document.querySelector(selector);
         }
 
         async #handleSubmit() {
             this.#loading = true;
 
             let body = {};
-            for (let key in this.#elements.inputs) {
-                body[key] = this.#elements.inputs[key].value;
+            for (let key in this.elements.inputs) {
+                body[key] = this.elements.inputs[key].value;
             }
 
             // todo - validate fields
@@ -117,35 +99,35 @@
 
         set #loading(isLoading) {
             // Indicate loading
-            const icon = this.#elements.submitBtn.querySelector('span');
+            const icon = this.elements.submitBtn.querySelector('span');
             icon.style.display = isLoading ? 'inline-block' : 'none';
 
             // Disable inputs
-            for (let key in this.#elements.inputs) {
-                this.#elements.inputs[key].disabled = isLoading ? 'disabled' : '';
+            for (let key in this.elements.inputs) {
+                this.elements.inputs[key].disabled = isLoading ? 'disabled' : '';
             }
             
             // Disable button
-            this.#elements.submitBtn.disabled = isLoading ? 'disabled' : '';
+            this.elements.submitBtn.disabled = isLoading ? 'disabled' : '';
         }
 
         set #error(error) {
-            this.#elements.errorMessage.textContent = error;
+            this.elements.errorMessage.textContent = error;
             if (error != '') {
                 this.#success = '';
-                this.#elements.errorMessage.style.display = 'block';
+                this.elements.errorMessage.style.display = 'block';
             } else {
-                this.#elements.errorMessage.style.display = 'none';
+                this.elements.errorMessage.style.display = 'none';
             }
         }
 
         set #success(successMsg) {
-            this.#elements.successMessage.innerHTML = successMsg;
+            this.elements.successMessage.innerHTML = successMsg;
             if (successMsg != '') {
                 this.#error = '';
-                this.#elements.successMessage.style.display = 'block';
+                this.elements.successMessage.style.display = 'block';
             } else {
-                this.#elements.successMessage.style.display = 'none';
+                this.elements.successMessage.style.display = 'none';
             }
         }
     }
