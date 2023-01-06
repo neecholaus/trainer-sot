@@ -1,25 +1,15 @@
-{{ define "trainer/sign-up.html" }}
+{{ define "trainer/sign-in.html" }}
 
 {{ template "layouts/document-head.html" .}}
 
-<div id="SignUp" class="dark:divide-slate-700 font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
-    <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-200">Sign Up</h1>
+<div id="SignIn" class="dark:divide-slate-700 font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
+    <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-200">Sign In</h1>
 
     <div id="error-message" class="simple-error-msg" style="display:none;"></div>
     <div id="success-message" class="simple-success-msg" style="display:none;"></div>
 
     <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
         <div class="pb-10">
-            <div class="flex justify-between mb-6">
-                <label class="mr-1">
-                    <span class="text-sm text-slate-500 dark:text-slate-400">First Name</span>
-                    <input type="text" name="firstName" autocomplete="off" class="input" />
-                </label>
-                <label class="ml-1">
-                    <span class="text-sm text-slate-500 dark:text-slate-400">Last Name</span>
-                    <input type="text" name="lastName" autocomplete="off" class="input" />
-                </label>
-            </div>
             <label>
                 <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
                 <input type="text" name="email" autocomplete="off" class="input" />
@@ -29,13 +19,13 @@
                 <input type="password" name="password" autocomplete="off" class="input" />
             </label>
         </div>
-        
+
         <div class="flex justify-between">
             <div>
-                <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-500 mt-6">Already have an account?</a>
+                <a href="/trainer/sign-up" class="inline-block text-sm hover:underline text-slate-500 mt-6">Don't have an account?</a>
             </div>
             <div class="mt-4 text-right">
-                    <button type="button" id="submit" class="btn btn-primary">
+                <button type="button" id="submit" class="btn btn-primary">
                     <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
                     Start
                 </button>
@@ -45,14 +35,12 @@
 </div>
 
 <script>
-    class SignUp {
-        #container = 'div#SignUp'
+    class SignIn {
+        #container = 'div#SignIn'
         #elements = {
             errorMessage: '#error-message',
             successMessage: '#success-message',
             inputs: {
-                firstName: 'input[name="firstName"]',
-                lastName: 'input[name="lastName"]',
                 email: 'input[name="email"]',
                 password: 'input[name="password"]',
             },
@@ -95,7 +83,7 @@
 
             // todo - validate fields
 
-            const res = await fetch('/trainer/sign-up', {
+            const res = await fetch('/trainer/sign-in', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -106,7 +94,7 @@
             const resBody = await res.json();
 
             if (res.status == 200) {
-                // todo - improve login prompt (3,2,1 count down to redirect perhaps?)
+                // todo - redirect to dashboard
                 this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
             } else {
                 this.#error = resBody.error;
@@ -124,7 +112,7 @@
             for (let key in this.#elements.inputs) {
                 this.#elements.inputs[key].disabled = isLoading ? 'disabled' : '';
             }
-            
+
             // Disable button
             this.#elements.submitBtn.disabled = isLoading ? 'disabled' : '';
         }
@@ -150,7 +138,7 @@
         }
     }
 
-    new SignUp();
+    new SignIn();
 </script>
 
 {{ template "layouts/document-footer.html" .}}

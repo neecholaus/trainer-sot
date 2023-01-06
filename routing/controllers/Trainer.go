@@ -8,12 +8,14 @@ import (
 
 func SignUp(c *gin.Context) {
 	c.HTML(http.StatusOK, "trainer/sign-up.html", gin.H{
-		"title": "Main website",
+		"title": "Sign Up",
 	})
 }
 
 func SignIn(c *gin.Context) {
-	c.String(200, "This will be your login page.")
+	c.HTML(http.StatusOK, "trainer/sign-in.html", gin.H{
+		"title": "Sign In",
+	})
 }
 
 func Home(c *gin.Context) {

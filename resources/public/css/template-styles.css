@@ -588,6 +588,10 @@ video {
   margin-left: -0.75rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -688,6 +692,22 @@ video {
 
 .pb-8 {
   padding-bottom: 2rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pb-12 {
+  padding-bottom: 3rem;
+}
+
+.pb-14 {
+  padding-bottom: 3.5rem;
+}
+
+.pb-11 {
+  padding-bottom: 2.75rem;
 }
 
 .text-right {
