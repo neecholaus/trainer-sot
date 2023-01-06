@@ -106,3 +106,83 @@
   --tw-text-opacity: 1;
   color: rgb(254 202 202 / var(--tw-text-opacity))
 }
+
+.btn,
+button[type="button"],
+button[type="submit"] {
+  border-radius: 9999px;
+  border-width: 1px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity))
+}
+
+.btn:hover,
+button[type="button"]:hover,
+button[type="submit"]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity))
+}
+
+.dark .btn,.dark 
+button[type="button"],.dark 
+button[type="submit"] {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 65 85 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity))
+}
+
+.dark .btn:hover,.dark 
+button[type="button"]:hover,.dark 
+button[type="submit"]:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(71 85 105 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity))
+}
+
+.btn.btn-primary,
+button[type="button"].btn.btn-primary,
+button[type="submit"].btn.btn-primary {
+  --tw-border-opacity: 1;
+  border-color: rgb(56 189 248 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.btn.btn-primary:hover,
+button[type="button"].btn.btn-primary:hover,
+button[type="submit"].btn.btn-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity))
+}
+
+.dark .btn.btn-primary,.dark 
+button[type="button"].btn.btn-primary,.dark 
+button[type="submit"].btn.btn-primary {
+  --tw-border-opacity: 1;
+  border-color: rgb(14 165 233 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(224 242 254 / var(--tw-text-opacity))
+}
+
+.dark .btn.btn-primary:hover,.dark 
+button[type="button"].btn.btn-primary:hover,.dark 
+button[type="submit"].btn.btn-primary:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(56 189 248 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity))
+}

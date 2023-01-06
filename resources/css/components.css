@@ -49,3 +49,39 @@
         dark:bg-red-800
         dark:text-red-200
 }
+
+.btn,
+button[type="button"],
+button[type="submit"] {
+    @apply
+        px-8
+        py-2
+        rounded-full
+        border
+
+        hover:bg-slate-200
+        text-slate-500
+
+        dark:bg-slate-800
+        dark:text-slate-400
+        dark:border-slate-700
+        dark:hover:bg-slate-700
+        dark:hover:border-slate-600
+        dark:hover:text-slate-300
+}
+
+.btn.btn-primary,
+button[type="button"].btn.btn-primary,
+button[type="submit"].btn.btn-primary {
+    @apply
+        border-sky-400
+        bg-sky-400
+        hover:bg-sky-500
+        text-white
+
+        dark:bg-sky-500
+        dark:text-sky-100
+        dark:border-sky-500
+        dark:hover:bg-sky-400
+        dark:hover:border-sky-400
+}
