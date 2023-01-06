@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"nicholas/trainer-sot/db"
 	"nicholas/trainer-sot/routing"
 	"os"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
