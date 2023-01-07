@@ -39,9 +39,7 @@ func Auth() gin.HandlerFunc {
 
 		if auth == "" {
 			c.Abort()
-			c.JSON(403, gin.H{
-				"error": "You are not logged in",
-			})
+			c.Redirect(302, "/trainer/sign-in")
 			return
 		}
 
