@@ -9,16 +9,19 @@
         <!-- Left Sidebar -->
         <div class="fixed min-h-screen w-64 hidden lg:block bg-white dark:bg-slate-800">
             <div class="flex flex-col min-h-screen h-screen overflow-y-auto">
-                <div class="px-4 py-10 grow-0 border-x bg-slate-100 dark:bg-slate-700 dark:border-slate-600 border-slate-200">
-                    <h1 class="text-2xl font-bold">Test</h1>
+                <div class="px-4 py-4 grow-0 border-x bg-slate-100 dark:bg-slate-700 dark:border-slate-600 border-slate-200 dark:text-slate-300">
+                    <h1 class="text-xl font-bold"><span class="text-slate-500 font-normal">My</span>Clients</h1>
                 </div>
                 <div class="p-4 grow border-x dark:border-slate-700">
-                    <button class="btn w-full rounded-none">
+                    <button class="btn btn-sm text-left w-full rounded-none">
                         Clients
                     </button>
-                    <button onclick="logout()" class="btn w-full rounded-none mt-3">
+                    <button onclick="logout()" class="mb-4 btn btn-sm text-left w-full rounded-none mt-3">
                         Log Out
                     </button>
+
+                    <!-- todo - refine toggle -->
+                    <a onclick="toggleDarkMode()" class="font-mono text-sm text-slate-400 hover:text-slate-600 cursor-pointer">Theme</a>
                 </div>
             </div>
         </div>

@@ -5,8 +5,10 @@
         const body = document.querySelector('body');
         let isDarkMode = body.classList.contains('dark');
 
+        // force will basically say that we are currently in the opposite passed.
+        // i.e passing 'light' tells me that we are in dark mode, and I will swap.
         if (force && ['light', 'dark'].indexOf(force) > -1) {
-            isDarkMode = force;
+            isDarkMode = force === 'light';
         }
 
 
@@ -27,19 +29,21 @@
             body.classList.remove(cssClass);
         }
 
+        // i.e is currently dark mode, after this point setting will be the other
         if (isDarkMode) {
             for (let cssClass of lightModeClasses) {
                 body.classList.add(cssClass)
             }
+            window.localStorage.setItem('darkModeSetting', 'off');
         } else {
             for (let cssClass of darkModeClasses) {
                 body.classList.add(cssClass)
             }
+            window.localStorage.setItem('darkModeSetting', 'on');
         }
     }
 
-    // todo - check local storage for dark mode setting
-    toggleDarkMode('light');
+    toggleDarkMode(window.localStorage.getItem('darkModeSetting') === 'on' ? 'dark' : 'light');
 </script>
 
 </body>

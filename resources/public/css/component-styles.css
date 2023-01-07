@@ -110,7 +110,7 @@
 .btn,
 button[type="button"],
 button[type="submit"] {
-  border-radius: 9999px;
+  border-radius: 0.375rem;
   border-width: 1px;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -185,4 +185,15 @@ button[type="submit"].btn.btn-primary:hover {
   border-color: rgb(56 189 248 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: rgb(56 189 248 / var(--tw-bg-opacity))
+}
+
+button.btn.btn-sm,
+button[type="button"].btn.btn-primary,
+button[type="submit"].btn.btn-primary {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem
 }

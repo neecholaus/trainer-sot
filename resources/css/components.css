@@ -56,7 +56,7 @@ button[type="submit"] {
     @apply
         px-8
         py-2
-        rounded-full
+        rounded-md
         border
 
         hover:bg-slate-200
@@ -84,4 +84,13 @@ button[type="submit"].btn.btn-primary {
         dark:border-sky-500
         dark:hover:bg-sky-400
         dark:hover:border-sky-400
+}
+
+button.btn.btn-sm,
+button[type="button"].btn.btn-primary,
+button[type="submit"].btn.btn-primary {
+    @apply
+        text-sm
+        py-1
+        px-4
 }
