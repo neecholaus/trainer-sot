@@ -50,6 +50,13 @@
         dark:text-red-200
 }
 
+/**
+ *
+ *
+ * Buttons
+ *
+ *
+ */
 .btn,
 button[type="button"],
 button[type="submit"] {
@@ -59,7 +66,8 @@ button[type="submit"] {
         rounded-md
         border
 
-        hover:bg-slate-200
+        hover:bg-slate-100
+        hover:border-slate-300
         text-slate-500
 
         dark:bg-slate-800
@@ -93,4 +101,62 @@ button[type="submit"].btn.btn-primary {
         text-sm
         py-1
         px-4
+}
+
+
+/**
+ *
+ *
+ * Sidebar Buttons
+ *
+ *
+ */
+#sidebar button.sidebar-btn {
+    @apply
+    px-4
+    py-1
+    rounded-md
+    border
+    text-sm
+    w-full
+    text-left
+
+    hover:bg-slate-100
+    hover:border-slate-300
+    text-slate-500
+
+    dark:bg-slate-800
+    dark:text-slate-400
+    dark:border-slate-700
+    dark:hover:bg-slate-700
+    dark:hover:border-slate-600
+    dark:hover:text-slate-300 
+}
+
+#sidebar button.sidebar-btn.active {
+    @apply
+        bg-blue-100
+        text-blue-600
+        border-blue-200
+
+        dark:bg-slate-700
+        dark:border-slate-500
+        dark:text-slate-100
+}
+
+#sidebar button.sidebar-btn i {
+    @apply
+        mr-2
+        text-slate-300
+
+        dark:text-slate-500
+}
+
+#sidebar button.sidebar-btn.active i {
+    @apply
+        mr-2
+
+        text-blue-300
+
+        dark:text-slate-500
 }
