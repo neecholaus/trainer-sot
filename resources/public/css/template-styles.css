@@ -836,6 +836,10 @@ video {
   overflow-x: hidden;
 }
 
+.overflow-y-visible {
+  overflow-y: visible;
+}
+
 .overflow-y-scroll {
   overflow-y: scroll;
 }
