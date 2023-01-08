@@ -4,7 +4,9 @@ class Validator {
             return false;
         }
 
-        // todo - actually validate
+        if (! toValidate.match(/^\w+@\w*.\w{2,}$/)) {
+            return false;
+        }
 
         return true;
     }

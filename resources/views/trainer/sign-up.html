@@ -10,8 +10,8 @@
     <div class="p-4">
         <h1 class="text-lg text-slate-800 dark:text-slate-200">Sign Up</h1>
 
-        <div id="error-message" class="simple-error-msg" style="display:none;"></div>
-        <div id="success-message" class="simple-success-msg" style="display:none;"></div>
+        <div id="error-message" class="simple-error-msg mt-3" style="display:none;"></div>
+        <div id="success-message" class="simple-success-msg mt-3" style="display:none;"></div>
 
         <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
             <div class="pb-10">
@@ -81,7 +81,11 @@
                 body[key] = this.elements.inputs[key].value;
             }
 
-            // todo - validate fields
+            if (! Validator.asEmail(body.email)) {
+                this.#error = 'Please enter a valid email.';
+                this.#loading = false;
+                return;
+            }
 
             const res = await fetch('/trainer/sign-up', {
                 method: 'POST',
