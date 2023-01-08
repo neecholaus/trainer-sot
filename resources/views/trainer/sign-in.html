@@ -2,36 +2,41 @@
 
 {{ template "layouts/document-head.html" .}}
 
-<div id="SignIn" class="dark:divide-slate-700 font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
-    <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-200">Sign In</h1>
+<div id="SignIn" class="font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md mt-20 border border-slate-200 dark:border-slate-700">
+    <div class="bg-slate-100 dark:bg-slate-700 rounded-t-md p-4">
+        <h1 class="text-xl font-bold"><span class="text-slate-500 font-normal">My</span>Clients</h1>
+    </div>
 
-    <div id="error-message" class="simple-error-msg" style="display:none;"></div>
-    <div id="success-message" class="simple-success-msg" style="display:none;"></div>
+    <div class="p-4">
+        <h1 class="text-lg text-slate-800 dark:text-slate-200">Sign In</h1>
+        <div id="error-message" class="simple-error-msg" style="display:none;"></div>
+        <div id="success-message" class="simple-success-msg" style="display:none;"></div>
 
-    <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
-        <div class="pb-10">
-            <label>
-                <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
-                <input type="text" name="email" autocomplete="off" class="input" />
-            </label>
-            <label>
-                <span class="block text-sm text-slate-500 dark:text-slate-400 mt-6">Password</span>
-                <input type="password" name="password" autocomplete="off" class="input" />
-            </label>
-        </div>
-
-        <div class="flex justify-between">
-            <div>
-                <a href="/trainer/sign-up" class="inline-block text-sm hover:underline text-slate-500 mt-6">Don't have an account?</a>
+        <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
+            <div class="pb-10">
+                <label>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
+                    <input type="text" name="email" autocomplete="off" class="input" />
+                </label>
+                <label>
+                    <span class="block text-sm text-slate-500 dark:text-slate-400 mt-6">Password</span>
+                    <input type="password" name="password" autocomplete="off" class="input" />
+                </label>
             </div>
-            <div class="mt-4 text-right">
-                <button type="button" id="submit" class="btn btn-primary">
-                    <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
-                    Start
-                </button>
+
+            <div class="flex justify-between">
+                <div>
+                    <a href="/trainer/sign-up" class="inline-block text-sm hover:underline text-slate-500 mt-6">Don't have an account?</a>
+                </div>
+                <div class="mt-4 text-right">
+                    <button type="button" id="submit" class="btn btn-primary">
+                        <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
+                        Start
+                    </button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 <script>

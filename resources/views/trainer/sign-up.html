@@ -2,46 +2,52 @@
 
 {{ template "layouts/document-head.html" .}}
 
-<div id="SignUp" class="dark:divide-slate-700 font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md px-5 pt-11 pb-5 mt-20">
-    <h1 class="font-bold text-3xl mb-4 text-slate-800 dark:text-slate-200">Sign Up</h1>
+<div id="SignUp" class="font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md mt-20 border border-slate-200 dark:border-slate-700">
+    <div class="bg-slate-100 dark:bg-slate-700 rounded-t-md p-4">
+        <h1 class="text-xl font-bold"><span class="text-slate-500 font-normal">My</span>Clients</h1>
+    </div>
 
-    <div id="error-message" class="simple-error-msg" style="display:none;"></div>
-    <div id="success-message" class="simple-success-msg" style="display:none;"></div>
+    <div class="p-4">
+        <h1 class="text-lg text-slate-800 dark:text-slate-200">Sign Up</h1>
 
-    <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
-        <div class="pb-10">
-            <div class="flex justify-between mb-6">
-                <label class="mr-1">
-                    <span class="text-sm text-slate-500 dark:text-slate-400">First Name</span>
-                    <input type="text" name="firstName" autocomplete="off" class="input" />
+        <div id="error-message" class="simple-error-msg" style="display:none;"></div>
+        <div id="success-message" class="simple-success-msg" style="display:none;"></div>
+
+        <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
+            <div class="pb-10">
+                <div class="flex justify-between mb-6">
+                    <label class="mr-1">
+                        <span class="text-sm text-slate-500 dark:text-slate-400">First Name</span>
+                        <input type="text" name="firstName" autocomplete="off" class="input" />
+                    </label>
+                    <label class="ml-1">
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Last Name</span>
+                        <input type="text" name="lastName" autocomplete="off" class="input" />
+                    </label>
+                </div>
+                <label>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
+                    <input type="text" name="email" autocomplete="off" class="input" />
                 </label>
-                <label class="ml-1">
-                    <span class="text-sm text-slate-500 dark:text-slate-400">Last Name</span>
-                    <input type="text" name="lastName" autocomplete="off" class="input" />
+                <label>
+                    <span class="block text-sm text-slate-500 dark:text-slate-400 mt-6">Password</span>
+                    <input type="password" name="password" autocomplete="off" class="input" />
                 </label>
             </div>
-            <label>
-                <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
-                <input type="text" name="email" autocomplete="off" class="input" />
-            </label>
-            <label>
-                <span class="block text-sm text-slate-500 dark:text-slate-400 mt-6">Password</span>
-                <input type="password" name="password" autocomplete="off" class="input" />
-            </label>
-        </div>
-        
-        <div class="flex justify-between">
-            <div>
-                <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-500 mt-6">Already have an account?</a>
+            
+            <div class="flex justify-between">
+                <div>
+                    <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-500 mt-6">Already have an account?</a>
+                </div>
+                <div class="mt-4 text-right">
+                        <button type="button" id="submit" class="btn btn-primary">
+                        <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
+                        Start
+                    </button>
+                </div>
             </div>
-            <div class="mt-4 text-right">
-                    <button type="button" id="submit" class="btn btn-primary">
-                    <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
-                    Start
-                </button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 <script>

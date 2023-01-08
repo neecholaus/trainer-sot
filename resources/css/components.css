@@ -114,22 +114,23 @@ button[type="submit"].btn.btn-primary {
 #sidebar button.sidebar-btn {
     @apply
     px-4
-    py-1
-    rounded-md
-    border
+    py-1.5
+    rounded-none
     text-sm
     w-full
     text-left
+    border-l-2
+    border-l-slate-100
 
-    hover:bg-slate-100
-    hover:border-slate-300
     text-slate-500
+    hover:border-slate-300
+    hover:text-slate-600
 
+    dark:border-l-2
+    dark:border-l-slate-700
     dark:bg-slate-800
     dark:text-slate-400
-    dark:border-slate-700
-    dark:hover:bg-slate-700
-    dark:hover:border-slate-600
+    dark:hover:border-l-slate-500
     dark:hover:text-slate-300 
 }
 
@@ -137,7 +138,7 @@ button[type="submit"].btn.btn-primary {
     @apply
         bg-blue-100
         text-blue-600
-        border-blue-200
+        border-blue-300
 
         dark:bg-slate-700
         dark:border-slate-500
