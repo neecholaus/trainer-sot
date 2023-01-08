@@ -22,3 +22,11 @@ tailwind-watch-templates:
 
 tailwind-watch-components:
 	@./tailwindcss --watch -i ./resources/css/components.css -o ./resources/public/css/component-styles.css
+
+bundle-js:
+	# Removing existing bundle
+	@if [ -e resources/public/js/bundled.js ]; then\
+		rm resources/public/js/bundled.js;\
+	fi
+	# Making new bundle
+	@paste -s -d "\n" resources/js/*.js >> resources/public/js/bundled.js
