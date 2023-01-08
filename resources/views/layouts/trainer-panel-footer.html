@@ -10,6 +10,8 @@
 <!-- Centered content-->
 
 <script>
+    new SidebarActivator();
+
     const logout = () => {
         document.cookie = 'session=;max-age=-1;path=/';
         history.go();

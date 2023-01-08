@@ -46,9 +46,16 @@ class ElementHydrator {
      * @return object
      */
     static #getElement(selector, invoker) {
-        if (typeof(invoker.container) !== 'string') {
-            return invoker.container.querySelector(selector);
+        let selectorMethod = 'querySelector';
+
+        if (selector.substring(0,4) === 'all:') {
+            selector = selector.substring(4, selector.length);
+            selectorMethod = selectorMethod + 'All';
         }
-        return document.querySelector(selector);
+
+        if (invoker.container !== undefined && typeof(invoker.container) !== 'string') {
+            return invoker.container[selectorMethod](selector);
+        }
+        return document[selectorMethod](selector);
     }
 }
