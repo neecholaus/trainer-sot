@@ -111,8 +111,10 @@ button[type="submit"].btn.btn-primary {
  *
  *
  */
-#sidebar button.sidebar-btn {
+#sidebar .sidebar-btn {
     @apply
+    block
+    cursor-pointer
     px-4
     py-1.5
     rounded-none
@@ -134,7 +136,7 @@ button[type="submit"].btn.btn-primary {
     dark:hover:text-slate-300 
 }
 
-#sidebar button.sidebar-btn.active {
+#sidebar .sidebar-btn.active {
     @apply
         bg-blue-100
         text-blue-600
@@ -145,7 +147,7 @@ button[type="submit"].btn.btn-primary {
         dark:text-slate-100
 }
 
-#sidebar button.sidebar-btn i {
+#sidebar .sidebar-btn i {
     @apply
         mr-2
         text-slate-300
@@ -153,7 +155,7 @@ button[type="submit"].btn.btn-primary {
         dark:text-slate-500
 }
 
-#sidebar button.sidebar-btn.active i {
+#sidebar .sidebar-btn.active i {
     @apply
         mr-2
 

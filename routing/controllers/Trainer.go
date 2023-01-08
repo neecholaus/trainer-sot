@@ -19,9 +19,13 @@ func SignIn(c *gin.Context) {
 }
 
 func Home(c *gin.Context) {
-	email, _ := c.Get("email")
 	c.HTML(http.StatusOK, "trainer/dashboard.html", gin.H{
 		"title": "Dashboard",
-		"email": email,
+	})
+}
+
+func Clients(c *gin.Context) {
+	c.HTML(http.StatusOK, "trainer/clients.html", gin.H{
+		"title": "Clients",
 	})
 }

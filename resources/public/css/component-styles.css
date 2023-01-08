@@ -216,8 +216,10 @@ button[type="submit"].btn.btn-primary {
  *
  */
 
-#sidebar button.sidebar-btn {
+#sidebar .sidebar-btn {
+  display: block;
   width: 100%;
+  cursor: pointer;
   border-radius: 0px;
   border-left-width: 2px;
   --tw-border-opacity: 1;
@@ -233,14 +235,14 @@ button[type="submit"].btn.btn-primary {
   color: rgb(100 116 139 / var(--tw-text-opacity))
 }
 
-#sidebar button.sidebar-btn:hover {
+#sidebar .sidebar-btn:hover {
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity))
 }
 
-.dark #sidebar button.sidebar-btn {
+.dark #sidebar .sidebar-btn {
   border-left-width: 2px;
   --tw-border-opacity: 1;
   border-left-color: rgb(51 65 85 / var(--tw-border-opacity));
@@ -250,14 +252,14 @@ button[type="submit"].btn.btn-primary {
   color: rgb(148 163 184 / var(--tw-text-opacity))
 }
 
-.dark #sidebar button.sidebar-btn:hover {
+.dark #sidebar .sidebar-btn:hover {
   --tw-border-opacity: 1;
   border-left-color: rgb(100 116 139 / var(--tw-border-opacity));
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity))
 }
 
-#sidebar button.sidebar-btn.active {
+#sidebar .sidebar-btn.active {
   --tw-border-opacity: 1;
   border-color: rgb(147 197 253 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -266,7 +268,7 @@ button[type="submit"].btn.btn-primary {
   color: rgb(37 99 235 / var(--tw-text-opacity))
 }
 
-.dark #sidebar button.sidebar-btn.active {
+.dark #sidebar .sidebar-btn.active {
   --tw-border-opacity: 1;
   border-color: rgb(100 116 139 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -275,24 +277,24 @@ button[type="submit"].btn.btn-primary {
   color: rgb(241 245 249 / var(--tw-text-opacity))
 }
 
-#sidebar button.sidebar-btn i {
+#sidebar .sidebar-btn i {
   margin-right: 0.5rem;
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity))
 }
 
-.dark #sidebar button.sidebar-btn i {
+.dark #sidebar .sidebar-btn i {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity))
 }
 
-#sidebar button.sidebar-btn.active i {
+#sidebar .sidebar-btn.active i {
   margin-right: 0.5rem;
   --tw-text-opacity: 1;
   color: rgb(147 197 253 / var(--tw-text-opacity))
 }
 
-.dark #sidebar button.sidebar-btn.active i {
+.dark #sidebar .sidebar-btn.active i {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity))
 }

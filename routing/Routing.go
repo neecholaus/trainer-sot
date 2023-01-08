@@ -19,5 +19,6 @@ func RegisterRoutes(c *gin.Engine) {
 	trainerAuthGroup := c.Group("/trainer", Auth())
 	{
 		trainerAuthGroup.GET("/", controllers.Home)
+		trainerAuthGroup.GET("/clients", controllers.Clients)
 	}
 }
