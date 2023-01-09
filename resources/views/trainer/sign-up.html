@@ -76,10 +76,17 @@
         async #handleSubmit() {
             this.#loading = true;
 
+            const inviteKey = (new URLSearchParams(document.location.search)).get('invite-key');
+            if (! inviteKey) {
+                this.#error = 'No invite token was found.';
+                this.#loading = false;
+            }
+
             let body = {};
             for (let key in this.elements.inputs) {
                 body[key] = this.elements.inputs[key].value;
             }
+            body.inviteKey = inviteKey;
 
             if (! Validator.asEmail(body.email)) {
                 this.#error = 'Please enter a valid email.';
