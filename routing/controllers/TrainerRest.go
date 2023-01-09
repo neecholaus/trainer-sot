@@ -34,10 +34,19 @@ func SignUpRest(c *gin.Context) {
 		return
 	}
 
-	// todo - improved validation (email type, length, etc.)
+	// Required field validation
 	if body.Email == "" || body.Password == "" || body.FirstName == "" || body.LastName == "" {
 		c.JSON(400, gin.H{
 			"error": "Missing required field(s).",
+		})
+		return
+	}
+
+	// Email validation
+	v := Validator{}
+	if !v.IsEmail(body.Email) {
+		c.JSON(400, gin.H{
+			"error": "Please enter a valid email.",
 		})
 		return
 	}
@@ -113,10 +122,20 @@ func SignInRest(c *gin.Context) {
 		return
 	}
 
+	// Required field validation
 	if body.Email == "" || body.Password == "" {
 		fmt.Println("email was not provided in sign up request body")
 		c.JSON(400, gin.H{
 			"error": "Missing required fields.",
+		})
+		return
+	}
+
+	// Email validation
+	v := Validator{}
+	if !v.IsEmail(body.Email) {
+		c.JSON(400, gin.H{
+			"error": "Please enter a valid email.",
 		})
 		return
 	}
