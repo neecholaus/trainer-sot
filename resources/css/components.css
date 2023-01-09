@@ -61,14 +61,15 @@
 button[type="button"],
 button[type="submit"] {
     @apply
-        px-8
-        py-2
-        rounded-md
+        px-4
+        py-1
+        text-sm
+        rounded-sm
         border
 
         hover:bg-slate-100
         hover:border-slate-300
-        text-slate-500
+        text-slate-600
 
         dark:bg-slate-800
         dark:text-slate-400
@@ -82,27 +83,17 @@ button[type="submit"] {
 button[type="button"].btn.btn-primary,
 button[type="submit"].btn.btn-primary {
     @apply
-        border-sky-400
-        bg-sky-400
-        hover:bg-sky-500
+        border-sky-500
+        bg-sky-500
+        hover:bg-sky-600
         text-white
 
-        dark:bg-sky-500
-        dark:text-sky-100
-        dark:border-sky-500
-        dark:hover:bg-sky-400
-        dark:hover:border-sky-400
+        dark:bg-sky-700
+        dark:text-sky-200
+        dark:border-sky-700
+        dark:hover:bg-sky-600
+        dark:hover:border-sky-600
 }
-
-button.btn.btn-sm,
-button[type="button"].btn.btn-primary,
-button[type="submit"].btn.btn-primary {
-    @apply
-        text-sm
-        py-1
-        px-4
-}
-
 
 /**
  *
@@ -126,7 +117,7 @@ button[type="submit"].btn.btn-primary {
 
     text-slate-500
     hover:border-slate-300
-    hover:text-slate-600
+    hover:text-black
 
     dark:border-l-2
     dark:border-l-slate-700
@@ -162,4 +153,50 @@ button[type="submit"].btn.btn-primary {
         text-blue-300
 
         dark:text-slate-500
+}
+
+/**
+ *
+ *
+ * Tables
+ *
+ *
+ */
+table.table {
+    border-spacing:0;
+    border-collapse:separate;
+    @apply
+        w-full
+        rounded-sm
+        border
+        border-slate-200
+
+        dark:border-slate-700
+}
+
+table.table thead th, table.table tbody td {
+    @apply
+        py-1
+        px-2
+}
+
+table.table thead {
+    @apply
+        rounded-t-sm
+}
+table.table thead th {
+    @apply
+        text-left
+        border-b
+        border-slate-200
+
+        dark:border-slate-700
+}
+table.table thead tr th:first-child {
+    @apply
+        rounded-tl-sm
+}
+table.table thead th:last-child {
+    @apply
+        rounded-tr-sm
 }
