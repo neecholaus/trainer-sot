@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"nicholas/trainer-sot/db"
 	"nicholas/trainer-sot/db/models"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -17,6 +18,7 @@ type TrainerAuthJwtClaims struct {
 }
 
 type signUpRestRequestBody struct {
+	InviteKey string `json:"inviteKey"`
 	Email     string `json:"email"`
 	Password  string `json:"password"`
 	FirstName string `json:"firstName"`
@@ -30,6 +32,15 @@ func SignUpRest(c *gin.Context) {
 		fmt.Println("error while binding sign up request body")
 		c.JSON(500, gin.H{
 			"error": "Could not read body.",
+		})
+		return
+	}
+
+	// Require an invite key
+	if body.InviteKey == "" || body.InviteKey != os.Getenv("SIGN_UP_INVITE_KEY") {
+		fmt.Printf("sign up prevented because of an invalid sign up key: '%s'\n", body.InviteKey)
+		c.JSON(400, gin.H{
+			"error": "Please provide a valid invite key.",
 		})
 		return
 	}

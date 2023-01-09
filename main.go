@@ -7,9 +7,16 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		fmt.Printf("error while loading .env file: %s\n", err)
+		return
+	}
+
 	// Handle one off commands such as db migration
 	cmd, isCommand := determineIfCommand()
 	if isCommand {

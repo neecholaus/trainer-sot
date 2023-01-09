@@ -14,7 +14,7 @@ func (_ *Validator) IsEmail(toValidate string) bool {
 
 	match, err := regexp.Match(`^\w+@\w{2,}.\w{2}`, []byte(toValidate))
 	if err != nil {
-		fmt.Printf("error while validating as email: %s", err)
+		fmt.Printf("error while validating as email: %s\n", err)
 		return false
 	}
 
