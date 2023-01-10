@@ -1,0 +1,216 @@
+.input {
+    @apply
+    px-3
+    py-2
+    border
+    rounded-md
+    w-full
+    focus:outline-none
+
+    border-slate-200
+    bg-white
+    placeholder-slate-500
+    text-slate-700
+    hover:border-slate-300
+    focus:border-slate-300
+
+    dark:border-slate-700
+    dark:bg-slate-800
+    dark:placeholder-slate-400
+    dark:text-slate-300
+    dark:hover:border-slate-600
+    dark:focus:border-slate-600
+}
+
+.simple-success-msg {
+    @apply
+        text-sm
+        rounded-md
+        px-4
+        py-2
+
+        bg-green-200
+        text-green-700
+
+        dark:bg-green-800
+        dark:text-green-200
+}
+
+.simple-error-msg {
+    @apply
+        text-sm
+        rounded-md
+        px-4
+        py-2
+
+        bg-red-200
+        text-red-700
+
+        dark:bg-red-800
+        dark:text-red-200
+}
+
+/**
+ *
+ *
+ * Buttons
+ *
+ *
+ */
+.btn,
+button[type="button"],
+button[type="submit"] {
+    @apply
+        px-4
+        py-1
+        text-sm
+        rounded-sm
+        border
+
+        hover:bg-slate-100
+        hover:border-slate-300
+        text-slate-600
+
+        dark:bg-slate-800
+        dark:text-slate-400
+        dark:border-slate-700
+        dark:hover:bg-slate-700
+        dark:hover:border-slate-600
+        dark:hover:text-slate-300
+}
+
+.btn.btn-primary,
+button[type="button"].btn.btn-primary,
+button[type="submit"].btn.btn-primary {
+    @apply
+        border-sky-500
+        bg-sky-500
+        hover:bg-sky-600
+        text-white
+
+        dark:bg-sky-700
+        dark:text-sky-200
+        dark:border-sky-700
+        dark:hover:bg-sky-600
+        dark:hover:border-sky-600
+}
+
+/**
+ *
+ *
+ * Sidebar Buttons
+ *
+ *
+ */
+#sidebar .sidebar-btn {
+    @apply
+    block
+    cursor-pointer
+    px-4
+    py-1.5
+    rounded-none
+    text-sm
+    w-full
+    text-left
+    border-l-2
+    border-l-slate-100
+
+    text-slate-500
+    hover:border-slate-300
+    hover:text-black
+
+    dark:border-l-2
+    dark:border-l-slate-700
+    dark:bg-slate-800
+    dark:text-slate-400
+    dark:hover:border-l-slate-500
+    dark:hover:text-slate-300 
+}
+
+#sidebar .sidebar-btn.active {
+    @apply
+        bg-blue-100
+        text-blue-600
+        border-blue-300
+
+        dark:bg-slate-700
+        dark:border-slate-500
+        dark:text-slate-100
+}
+
+#sidebar .sidebar-btn i {
+    @apply
+        mr-2
+        text-slate-300
+
+        dark:text-slate-500
+}
+
+#sidebar .sidebar-btn.active i {
+    @apply
+        mr-2
+
+        text-blue-300
+
+        dark:text-slate-500
+}
+
+/**
+ *
+ *
+ * Tables
+ *
+ *
+ */
+table.table {
+    border-spacing:0;
+    border-collapse:separate;
+    @apply
+        w-full
+        rounded-sm
+        border
+        border-slate-200
+
+        dark:border-slate-700
+}
+
+table.table thead th, table.table tbody td {
+    @apply
+        py-1
+        px-2
+        text-slate-600
+
+        dark:text-slate-400
+}
+
+table.table thead {
+    @apply
+        rounded-t-sm
+}
+table.table thead th {
+    @apply
+        font-normal
+        text-left
+        text-slate-400
+        border-b
+        border-slate-200
+
+        dark:border-slate-700
+        dark:text-slate-600
+}
+table.table thead tr th:first-child {
+    @apply
+        rounded-tl-sm
+}
+table.table thead th:last-child {
+    @apply
+        rounded-tr-sm
+}
+table.table tbody tr:hover td {
+    @apply
+        bg-slate-100
+        text-slate-700
+
+        dark:bg-slate-700
+        dark:text-slate-300
+}

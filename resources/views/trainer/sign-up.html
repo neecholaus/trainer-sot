@@ -1,0 +1,157 @@
+{{ define "trainer/sign-up.html" }}
+
+{{ template "layouts/document-head.html" .}}
+
+<div id="SignUp" class="font-sans w-full max-w-md mx-auto drop-shadow-xl bg-white dark:bg-slate-800 rounded-md mt-20 border border-slate-200 dark:border-slate-700">
+    <div class="bg-slate-100 dark:bg-slate-700 rounded-t-md p-4">
+        <h1 class="text-xl font-bold"><span class="text-slate-500 font-normal">My</span>Clients</h1>
+    </div>
+
+    <div class="p-4">
+        <h1 class="text-lg text-slate-800 dark:text-slate-200">Sign Up</h1>
+
+        <div id="error-message" class="simple-error-msg mt-3" style="display:none;"></div>
+        <div id="success-message" class="simple-success-msg mt-3" style="display:none;"></div>
+
+        <form class="divide-y divide-dashed dark:divide-slate-700 pt-5">
+            <div class="pb-10">
+                <div class="flex justify-between mb-6">
+                    <label class="mr-1">
+                        <span class="text-sm text-slate-500 dark:text-slate-400">First Name</span>
+                        <input type="text" name="firstName" autocomplete="off" class="input" />
+                    </label>
+                    <label class="ml-1">
+                        <span class="text-sm text-slate-500 dark:text-slate-400">Last Name</span>
+                        <input type="text" name="lastName" autocomplete="off" class="input" />
+                    </label>
+                </div>
+                <label>
+                    <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
+                    <input type="text" name="email" autocomplete="off" class="input" />
+                </label>
+                <label>
+                    <span class="block text-sm text-slate-500 dark:text-slate-400 mt-6">Password</span>
+                    <input type="password" name="password" autocomplete="off" class="input" />
+                </label>
+            </div>
+            
+            <div class="flex justify-between">
+                <div>
+                    <a href="/trainer/sign-in" class="inline-block text-sm hover:underline text-slate-500 mt-6">Already have an account?</a>
+                </div>
+                <div class="mt-4 text-right">
+                        <button type="button" id="submit" class="btn btn-primary">
+                        <span class="mr-2 -ml-3 transition duration-400" style="display:none;"><i class="fa fa-gear fa-spin"></i></span>
+                        Start
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    class SignUp {
+        container = 'div#SignUp'
+        elements = {
+            errorMessage: '#error-message',
+            successMessage: '#success-message',
+            inputs: {
+                firstName: 'input[name="firstName"]',
+                lastName: 'input[name="lastName"]',
+                email: 'input[name="email"]',
+                password: 'input[name="password"]',
+            },
+            submitBtn: 'button#submit',
+        }
+
+        constructor() {
+            ElementHydrator.hydrate(this);
+
+            this.elements.submitBtn.addEventListener('click', () => {
+                this.#handleSubmit();
+            })
+        }
+
+        async #handleSubmit() {
+            this.#loading = true;
+
+            const inviteKey = (new URLSearchParams(document.location.search)).get('invite-key');
+            if (! inviteKey) {
+                this.#error = 'No invite token was found.';
+                this.#loading = false;
+            }
+
+            let body = {};
+            for (let key in this.elements.inputs) {
+                body[key] = this.elements.inputs[key].value;
+            }
+            body.inviteKey = inviteKey;
+
+            if (! Validator.asEmail(body.email)) {
+                this.#error = 'Please enter a valid email.';
+                this.#loading = false;
+                return;
+            }
+
+            const res = await fetch('/trainer/sign-up', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(body)
+            });
+
+            const resBody = await res.json();
+
+            if (res.status == 200) {
+                // todo - improve login prompt (3,2,1 count down to redirect perhaps?)
+                this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
+            } else {
+                this.#error = resBody.error;
+            }
+
+            this.#loading = false;
+        }
+
+        set #loading(isLoading) {
+            // Indicate loading
+            const icon = this.elements.submitBtn.querySelector('span');
+            icon.style.display = isLoading ? 'inline-block' : 'none';
+
+            // Disable inputs
+            for (let key in this.elements.inputs) {
+                this.elements.inputs[key].disabled = isLoading ? 'disabled' : '';
+            }
+            
+            // Disable button
+            this.elements.submitBtn.disabled = isLoading ? 'disabled' : '';
+        }
+
+        set #error(error) {
+            this.elements.errorMessage.textContent = error;
+            if (error != '') {
+                this.#success = '';
+                this.elements.errorMessage.style.display = 'block';
+            } else {
+                this.elements.errorMessage.style.display = 'none';
+            }
+        }
+
+        set #success(successMsg) {
+            this.elements.successMessage.innerHTML = successMsg;
+            if (successMsg != '') {
+                this.#error = '';
+                this.elements.successMessage.style.display = 'block';
+            } else {
+                this.elements.successMessage.style.display = 'none';
+            }
+        }
+    }
+
+    new SignUp();
+</script>
+
+{{ template "layouts/document-footer.html" .}}
+
+{{ end }}

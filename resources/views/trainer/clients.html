@@ -1,0 +1,31 @@
+{{ define "trainer/clients.html" }}
+
+{{ template "layouts/trainer-panel-head.html" .}}
+
+<div id="Clients" class="p-4">
+    <h1 class="text-2xl font-bold dark:font-normal mb-2">Clients</h1>
+    <hr class="dark:border-slate-700"/>
+
+    <div class="mt-8">
+        <button type="button" class="btn">Add</button>
+    </div>
+
+    <table class="table mt-2">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Gregory A.</td>
+                <td>gregory@gmail.com</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{{ template "layouts/trainer-panel-footer.html" .}}
+
+{{ end }}

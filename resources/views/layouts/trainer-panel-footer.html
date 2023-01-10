@@ -1,0 +1,23 @@
+{{ define "layouts/trainer-panel-footer.html" }}
+
+        </div>
+        <!-- End Content -->
+
+    </div>
+    <!-- Split content -->
+
+</div>
+<!-- Centered content-->
+
+<script>
+    new SidebarActivator();
+
+    const logout = () => {
+        document.cookie = 'session=;max-age=-1;path=/';
+        history.go();
+    }
+</script>
+
+{{ template "layouts/document-footer.html" .}}
+
+{{ end }}
