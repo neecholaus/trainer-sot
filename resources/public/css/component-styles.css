@@ -317,7 +317,9 @@ table.table thead th, table.table tbody td {
   padding-top:0.25rem;
   padding-bottom:0.25rem;
   padding-left:0.5rem;
-  padding-right:0.5rem
+  padding-right:0.5rem;
+  --tw-text-opacity:1;
+  color:rgb(71 85 105 / var(--tw-text-opacity))
 }
 
 table.table thead {
@@ -329,12 +331,17 @@ table.table thead th {
   border-bottom-width:1px;
   --tw-border-opacity:1;
   border-color:rgb(226 232 240 / var(--tw-border-opacity));
-  text-align:left
+  text-align:left;
+  font-weight:400;
+  --tw-text-opacity:1;
+  color:rgb(148 163 184 / var(--tw-text-opacity))
 }
 
 .dark table.table thead th {
   --tw-border-opacity:1;
-  border-color:rgb(51 65 85 / var(--tw-border-opacity))
+  border-color:rgb(51 65 85 / var(--tw-border-opacity));
+  --tw-text-opacity:1;
+  color:rgb(71 85 105 / var(--tw-text-opacity))
 }
 
 table.table thead tr th:first-child {
@@ -343,4 +350,18 @@ table.table thead tr th:first-child {
 
 table.table thead th:last-child {
   border-top-right-radius:0.125rem
+}
+
+table.table tbody tr:hover td {
+  --tw-bg-opacity:1;
+  background-color:rgb(241 245 249 / var(--tw-bg-opacity));
+  --tw-text-opacity:1;
+  color:rgb(51 65 85 / var(--tw-text-opacity))
+}
+
+.dark table.table tbody tr:hover td {
+  --tw-bg-opacity:1;
+  background-color:rgb(51 65 85 / var(--tw-bg-opacity));
+  --tw-text-opacity:1;
+  color:rgb(203 213 225 / var(--tw-text-opacity))
 }
