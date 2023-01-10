@@ -179,6 +179,8 @@ table.table thead th, table.table tbody td {
         py-1
         px-2
         text-slate-600
+
+        dark:text-slate-400
 }
 
 table.table thead {

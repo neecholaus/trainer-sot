@@ -322,6 +322,11 @@ table.table thead th, table.table tbody td {
   color:rgb(71 85 105 / var(--tw-text-opacity))
 }
 
+.dark table.table thead th,.dark  table.table tbody td {
+  --tw-text-opacity:1;
+  color:rgb(148 163 184 / var(--tw-text-opacity))
+}
+
 table.table thead {
   border-top-left-radius:0.125rem;
   border-top-right-radius:0.125rem
