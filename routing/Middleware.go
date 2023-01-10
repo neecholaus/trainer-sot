@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"nicholas/trainer-sot/db"
 	"nicholas/trainer-sot/routing/controllers"
+	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -12,7 +13,7 @@ import (
 
 func CreateDBConnection() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		_, err := db.CreateDbConnection()
+		_, err := db.EnsureDbConnection()
 		if err != nil {
 			c.Abort()
 			c.String(500, "Failed to establish DB connection.")
@@ -48,16 +49,13 @@ func Auth() gin.HandlerFunc {
 
 			claims := controllers.TrainerAuthJwtClaims{}
 
-			// todo - replace secret key with env value
 			_, err := jwt.ParseWithClaims(rawToken, &claims, func(token *jwt.Token) (interface{}, error) {
-				return []byte("dummy-secret-key"), nil
+				return []byte(os.Getenv("JWT_SECRET_KEY")), nil
 			})
 			if err != nil {
 				fmt.Printf("could not parse jwt token: %s", err)
 				c.Abort()
-				c.JSON(403, gin.H{
-					"error": "Could not parse the provided header token",
-				})
+				c.Redirect(302, "/trainer/sign-in")
 				return
 			}
 

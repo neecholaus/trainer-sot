@@ -17,6 +17,11 @@ func main() {
 		return
 	}
 
+	if os.Getenv("JWT_SECRET_KEY") == "" {
+		fmt.Println("no jwt secret key found")
+		return
+	}
+
 	// Handle one off commands such as db migration
 	cmd, isCommand := determineIfCommand()
 	if isCommand {
@@ -29,7 +34,7 @@ func main() {
 	server.LoadHTMLGlob("./resources/views/**/*.html")
 	server.Static("/public", "./resources/public")
 
-	// Db connection created for each request
+	// Db connection ensured on each request
 	server.Use(routing.CreateDBConnection())
 
 	routing.RegisterRoutes(server)
@@ -45,7 +50,7 @@ func determineIfCommand() (string, bool) {
 	cmd := os.Args[1]
 
 	if cmd == "migrate" {
-		_, err := db.CreateDbConnection()
+		_, err := db.EnsureDbConnection()
 		if err != nil {
 			fmt.Println("Db connection failed")
 			return "", true

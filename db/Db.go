@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 	"nicholas/trainer-sot/db/models"
+	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -10,14 +11,19 @@ import (
 
 var Db *gorm.DB
 
-func CreateDbConnection() (*gorm.DB, error) {
+func EnsureDbConnection() (*gorm.DB, error) {
 	if Db != nil {
 		fmt.Println("db connection already created")
 		return Db, nil
 	}
 
-	// todo - replace with env values
-	dsn := "host=postgres user=local password=local dbname=local port=5432 sslmode=disable TimeZone=UTC"
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=UTC",
+		os.Getenv("POSTGRES_HOST"),
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASS"),
+		os.Getenv("POSTGRES_DB"),
+		os.Getenv("POSTGRES_PORT"),
+	)
 
 	// Declare so that Db uses global
 	var err error
@@ -25,6 +31,7 @@ func CreateDbConnection() (*gorm.DB, error) {
 	Db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Printf("Could not init db: %s", err)
+		Db = nil
 		return nil, err
 	}
 

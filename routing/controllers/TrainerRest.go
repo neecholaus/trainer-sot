@@ -196,8 +196,7 @@ func SignInRest(c *gin.Context) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
-	// todo - replace secret key with env value
-	signed, err := token.SignedString([]byte("dummy-secret-key"))
+	signed, err := token.SignedString([]byte(os.Getenv("JWT_SECRET_KEY")))
 	if err != nil {
 		fmt.Println("error while signing jwt key")
 		c.JSON(500, gin.H{
