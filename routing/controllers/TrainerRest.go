@@ -13,7 +13,8 @@ import (
 )
 
 type TrainerAuthJwtClaims struct {
-	Email string `json:"email,omitempty"`
+	TrainerId uint   `json:"trainerId,omitempty"`
+	Email     string `json:"email,omitempty"`
 	jwt.RegisteredClaims
 }
 
@@ -120,8 +121,9 @@ type signInRestRequestBody struct {
 	Password string `json:"password"`
 }
 
-// signInRest accepts and validates trainer credentials.
-// Then writes a request with a newly generated JWT token set in the Authorization header.
+// SignInRest
+// Accepts and validates trainer credentials, then writes a request with a newly generated
+// JWT token set in the Authorization header.
 func SignInRest(c *gin.Context) {
 	var body signInRestRequestBody
 	err := c.BindJSON(&body)
@@ -187,6 +189,7 @@ func SignInRest(c *gin.Context) {
 	}
 
 	claims := TrainerAuthJwtClaims{
+		trainer.ID,
 		body.Email,
 		jwt.RegisteredClaims{
 			Issuer:    "",

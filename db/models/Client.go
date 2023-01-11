@@ -2,12 +2,11 @@ package models
 
 import "gorm.io/gorm"
 
-type Trainer struct {
+type Client struct {
 	gorm.Model
+	TrainerId string
 	Email     string
-	Password  string
+	Phone     string
 	FirstName string
 	LastName  string
-
-	Clients []Client `gorm:"foreignKey:TrainerId"`
 }

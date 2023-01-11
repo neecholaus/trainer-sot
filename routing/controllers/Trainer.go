@@ -23,9 +23,3 @@ func Home(c *gin.Context) {
 		"title": "Dashboard",
 	})
 }
-
-func Clients(c *gin.Context) {
-	c.HTML(http.StatusOK, "trainer/clients.html", gin.H{
-		"title": "Clients",
-	})
-}

@@ -26,9 +26,9 @@ func CreateDBConnection() gin.HandlerFunc {
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// Web
-		header := c.GetHeader("Authorization")
 		// Json (REST)
+		header := c.GetHeader("Authorization")
+		// Web
 		cookie, _ := c.Cookie("session")
 
 		var auth string
@@ -59,8 +59,8 @@ func Auth() gin.HandlerFunc {
 				return
 			}
 
+			c.Set("trainerId", claims.TrainerId)
 			c.Set("email", claims.Email)
-			c.Set("sessionExpires", claims.ExpiresAt)
 		}
 
 		c.Next()

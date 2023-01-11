@@ -39,5 +39,5 @@ func EnsureDbConnection() (*gorm.DB, error) {
 }
 
 func Migrate() {
-	_ = Db.AutoMigrate(&models.Trainer{})
+	_ = Db.AutoMigrate(&models.Trainer{}, &models.Client{})
 }
