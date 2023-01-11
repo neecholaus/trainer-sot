@@ -15,6 +15,7 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
             </tr>
         </thead>
         <tbody>
@@ -60,6 +61,7 @@
             const row = document.createElement('tr');
             row.innerHTML += `<td>${json.firstName} ${json.lastName}</td>`
             row.innerHTML += `<td>${json.email}</td>`
+            row.innerHTML += `<td>${json.phone}</td>`
             return row;
         }
 
