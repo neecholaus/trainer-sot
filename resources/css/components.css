@@ -196,7 +196,7 @@ table.table thead th {
         border-slate-200
 
         dark:border-slate-700
-        dark:text-slate-600
+        dark:text-slate-500
 }
 table.table thead tr th:first-child {
     @apply

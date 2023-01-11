@@ -26,9 +26,9 @@ func CreateDBConnection() gin.HandlerFunc {
 
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		// Json (REST)
+		// Json (backup when no session cookie available for fetch)
 		header := c.GetHeader("Authorization")
-		// Web
+		// Web (primary)
 		cookie, _ := c.Cookie("session")
 
 		var auth string
@@ -39,8 +39,7 @@ func Auth() gin.HandlerFunc {
 		}
 
 		if auth == "" {
-			c.Abort()
-			c.Redirect(302, "/trainer/sign-in")
+			handleNoAuth(c)
 			return
 		}
 
@@ -54,8 +53,7 @@ func Auth() gin.HandlerFunc {
 			})
 			if err != nil {
 				fmt.Printf("could not parse jwt token: %s", err)
-				c.Abort()
-				c.Redirect(302, "/trainer/sign-in")
+				handleNoAuth(c)
 				return
 			}
 
@@ -65,4 +63,18 @@ func Auth() gin.HandlerFunc {
 
 		c.Next()
 	}
+}
+
+// handleNoAuth
+// Will handle response by returning response that is appropriate to the request. (json or redirect)
+func handleNoAuth(c *gin.Context) {
+	c.Abort()
+	if c.GetHeader("Content-Type") == "application/json" {
+		c.JSON(403, gin.H{
+			"error": "You are not authenticated.",
+		})
+		return
+	}
+
+	c.Redirect(302, "/trainer/sign-in")
 }

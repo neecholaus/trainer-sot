@@ -4,10 +4,10 @@ import "gorm.io/gorm"
 
 type Trainer struct {
 	gorm.Model
-	Email     string
+	Email     string `json:"email"`
 	Password  string
-	FirstName string
-	LastName  string
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
 
 	Clients []Client `gorm:"foreignKey:TrainerId"`
 }

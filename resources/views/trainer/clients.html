@@ -18,13 +18,59 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Gregory A.</td>
-                <td>gregory@gmail.com</td>
-            </tr>
         </tbody>
     </table>
 </div>
+
+<script>
+    class ClientListManager {
+        container = '#Clients';
+        elements = {
+            table: 'table',
+            tbody: 'table tbody'
+        }
+
+        constructor(props) {
+            ElementHydrator.hydrate(this);
+
+            this.#loadPage();
+        }
+
+
+        async #loadPage() {
+            this.#loading = true;
+            const reqBody = {};
+
+            const res = await fetch('/trainer/clients/list', {
+                headers: {
+                    'Authorization': '',
+                },
+            });
+
+            const body = await res.json();
+
+            // Inject into table
+            this.elements.tbody.innerHTML = '';
+            for (let client of body.clients) {
+                this.elements.tbody.appendChild(this.#buildTableRowFromJson(client));
+            }
+        }
+
+        #buildTableRowFromJson(json) {
+            const row = document.createElement('tr');
+            row.innerHTML += `<td>${json.firstName} ${json.lastName}</td>`
+            row.innerHTML += `<td>${json.email}</td>`
+            return row;
+        }
+
+        set #loading(isLoading) {
+            if (isLoading) {
+                this.elements.tbody.innerHTML = '<tr><td colspan="2" class="text-center"><i class="fa fa-spinner fa-spin mr-2"></i> Loading</td>';
+            }
+        }
+    }
+    new ClientListManager();
+</script>
 
 {{ template "layouts/trainer-panel-footer.html" .}}
 
