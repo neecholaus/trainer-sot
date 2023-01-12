@@ -105,7 +105,6 @@
             const resBody = await res.json();
 
             if (res.status == 200) {
-                // todo - improve login prompt (3,2,1 count down to redirect perhaps?)
                 this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
             } else {
                 this.#error = resBody.error;
