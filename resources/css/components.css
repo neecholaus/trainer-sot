@@ -84,10 +84,11 @@ button[type="submit"] {
 button[type="button"].btn.btn-primary,
 button[type="submit"].btn.btn-primary {
     @apply
-        border-sky-500
-        bg-sky-500
-        hover:bg-sky-600
-        text-white
+        border-blue-200
+        bg-blue-100
+        hover:bg-blue-200
+        hover:border-blue-300
+        text-blue-500
 
         dark:bg-sky-700
         dark:text-sky-200

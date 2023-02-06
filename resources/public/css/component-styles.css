@@ -167,18 +167,20 @@ button[type="submit"]:hover {
 button[type="button"].btn.btn-primary,
 button[type="submit"].btn.btn-primary {
   --tw-border-opacity:1;
-  border-color:rgb(14 165 233 / var(--tw-border-opacity));
+  border-color:rgb(191 219 254 / var(--tw-border-opacity));
   --tw-bg-opacity:1;
-  background-color:rgb(14 165 233 / var(--tw-bg-opacity));
+  background-color:rgb(219 234 254 / var(--tw-bg-opacity));
   --tw-text-opacity:1;
-  color:rgb(255 255 255 / var(--tw-text-opacity))
+  color:rgb(59 130 246 / var(--tw-text-opacity))
 }
 
 .btn.btn-primary:hover,
 button[type="button"].btn.btn-primary:hover,
 button[type="submit"].btn.btn-primary:hover {
+  --tw-border-opacity:1;
+  border-color:rgb(147 197 253 / var(--tw-border-opacity));
   --tw-bg-opacity:1;
-  background-color:rgb(2 132 199 / var(--tw-bg-opacity))
+  background-color:rgb(191 219 254 / var(--tw-bg-opacity))
 }
 
 .dark .btn.btn-primary,.dark 
