@@ -236,8 +236,6 @@ button[type="submit"].btn.btn-primary:hover {
 
 .dark #sidebar .sidebar-btn {
   border-right-width:2px;
-  --tw-border-opacity:1;
-  border-right-color:rgb(51 65 85 / var(--tw-border-opacity));
   --tw-bg-opacity:1;
   background-color:rgb(30 41 59 / var(--tw-bg-opacity));
   --tw-text-opacity:1;
@@ -246,7 +244,7 @@ button[type="submit"].btn.btn-primary:hover {
 
 .dark #sidebar .sidebar-btn:hover {
   --tw-border-opacity:1;
-  border-left-color:rgb(100 116 139 / var(--tw-border-opacity));
+  border-right-color:rgb(100 116 139 / var(--tw-border-opacity));
   --tw-text-opacity:1;
   color:rgb(203 213 225 / var(--tw-text-opacity))
 }
