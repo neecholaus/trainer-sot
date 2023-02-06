@@ -215,3 +215,40 @@ table.table tbody tr:hover td {
         dark:bg-slate-700
         dark:text-slate-300
 }
+
+/**
+ *
+ *
+ * Modal
+ *
+ *
+ */
+div.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+
+    @apply
+        min-h-screen
+        justify-center
+}
+div.modal-content {
+    @apply
+        mt-3
+        fixed
+        rounded-sm
+        p-4
+        drop-shadow-2xl
+        border
+        w-full
+        max-w-prose
+
+        bg-white
+        border-slate-400
+
+        dark:bg-slate-800
+        dark:border-slate-600
+}

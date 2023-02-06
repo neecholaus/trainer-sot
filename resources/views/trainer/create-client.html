@@ -1,0 +1,65 @@
+{{ define "trainer/client/create.html" }}
+
+<div id="CreateClient" class="modal">
+    <div class="modal-content">
+    <h1 class="text-xl font-bold mb-3">Add Client</h1>
+    <label class="block">
+        <span class="text-sm text-slate-500 dark:text-slate-400">First Name</span>
+        <input type="text" name="firstName" autocomplete="off" class="input" />
+    </label>
+    <label class="block mt-3">
+        <span class="text-sm text-slate-500 dark:text-slate-400">Last Name</span>
+        <input type="text" name="lastName" autocomplete="off" class="input" />
+    </label>
+    <label class="block mt-3">
+        <span class="text-sm text-slate-500 dark:text-slate-400">Email</span>
+        <input type="text" name="email" autocomplete="off" class="input" />
+    </label>
+    <label class="block mt-3">
+        <span class="text-sm text-slate-500 dark:text-slate-400">Phone</span>
+        <input type="text" name="phone" autocomplete="off" class="input" />
+    </label>
+    <div class="text-right">
+        <button type="button"
+                class="btn mt-3">
+            Save
+        </button>
+    </div>
+    </div>
+</div>
+
+<style>
+    #CreateClient {
+        display: none;
+    }
+</style>
+
+<script>
+    class CreateClient {
+        showBtn = undefined;
+        container = 'div.modal#CreateClient';
+        elements = {
+            inputs: 'all:input',
+        }
+
+        constructor() {
+            ElementHydrator.hydrate(this);
+            this.showBtn = document.querySelector('[data-modal="#CreateClient"]');
+            if (! this.showBtn) {
+                console.error('Could not hook into modal toggle button.');
+                return;
+            }
+            this.showBtn.addEventListener('click', () => {
+                this.#showModal();
+            });
+        }
+
+        #showModal() {
+            this.container.style.display = 'flex';
+        }
+    }
+
+    console.log(new CreateClient());
+</script>
+
+{{ end }}

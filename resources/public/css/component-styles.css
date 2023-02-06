@@ -372,3 +372,45 @@ table.table tbody tr:hover td {
   --tw-text-opacity:1;
   color:rgb(203 213 225 / var(--tw-text-opacity))
 }
+
+/**
+ *
+ *
+ * Modal
+ *
+ *
+ */
+
+div.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  min-height:100vh;
+  justify-content:center
+}
+
+div.modal-content {
+  position:fixed;
+  margin-top:0.75rem;
+  width:100%;
+  max-width:65ch;
+  border-radius:0.125rem;
+  border-width:1px;
+  --tw-border-opacity:1;
+  border-color:rgb(148 163 184 / var(--tw-border-opacity));
+  --tw-bg-opacity:1;
+  background-color:rgb(255 255 255 / var(--tw-bg-opacity));
+  padding:1rem;
+  --tw-drop-shadow:drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+  filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.dark div.modal-content {
+  --tw-border-opacity:1;
+  border-color:rgb(71 85 105 / var(--tw-border-opacity));
+  --tw-bg-opacity:1;
+  background-color:rgb(30 41 59 / var(--tw-bg-opacity))
+}
