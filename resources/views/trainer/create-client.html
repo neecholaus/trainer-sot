@@ -21,6 +21,10 @@
     </label>
     <div class="text-right">
         <button type="button"
+                class="close-modal btn mt-3">
+            Cancel
+        </button>
+        <button type="button"
                 class="btn mt-3">
             Save
         </button>
@@ -40,6 +44,7 @@
         container = 'div.modal#CreateClient';
         elements = {
             inputs: 'all:input',
+            closeBtn: 'button.close-modal',
         }
 
         constructor() {
@@ -50,12 +55,19 @@
                 return;
             }
             this.showBtn.addEventListener('click', () => {
-                this.#showModal();
+                this.#show();
+            });
+
+            this.elements.closeBtn.addEventListener('click', () => {
+               this.#hide();
             });
         }
 
-        #showModal() {
+        #show() {
             this.container.style.display = 'flex';
+        }
+        #hide() {
+            this.container.style.display = 'none';
         }
     }
 
