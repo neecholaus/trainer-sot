@@ -21,5 +21,6 @@ func RegisterRoutes(c *gin.Engine) {
 		trainerAuthGroup.GET("", controllers.Home)
 		trainerAuthGroup.GET("/clients", controllers.Clients)
 		trainerAuthGroup.GET("/clients/list", controllers.ClientListRest)
+		trainerAuthGroup.POST("/clients", controllers.ClientCreateRest)
 	}
 }
