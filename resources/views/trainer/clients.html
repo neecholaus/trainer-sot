@@ -52,10 +52,14 @@
 
             const body = await res.json();
 
-            // Inject into table
+            // Inject into table or show that none were found
             this.elements.tbody.innerHTML = '';
-            for (let client of body.clients) {
-                this.elements.tbody.appendChild(this.#buildTableRowFromJson(client));
+            if (body.clients.length) {
+                for (let client of body.clients) {
+                    this.elements.tbody.appendChild(this.#buildTableRowFromJson(client));
+                }
+            } else {
+                this.elements.tbody.innerHTML += '<tr><td colspan="3" class="text-center">No clients found.</td></tr>';
             }
         }
 
