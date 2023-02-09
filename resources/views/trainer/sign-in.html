@@ -85,8 +85,9 @@
 
             const resBody = await res.json();
 
-            if (res.status == 200) {
+            if (res.status === 200) {
                 this.#success = resBody.message + ' You will should be redirected.';
+                // Attach cookie and move user into portal
                 document.cookie = `session=${res.headers.get('Authorization')};Max-Age=6000;path=/`;
                 window.location = '/trainer';
             } else {

@@ -6,7 +6,6 @@
     rounded-sm
     w-full
     focus:outline-none
-    text-sm
 
     border-slate-200
     bg-white
@@ -26,9 +25,8 @@
 .simple-success-msg {
     @apply
         text-sm
-        rounded-md
-        px-4
-        py-2
+        rounded-sm
+        p-4
 
         bg-green-200
         text-green-700
@@ -40,9 +38,8 @@
 .simple-error-msg {
     @apply
         text-sm
-        rounded-md
-        px-4
-        py-2
+        rounded-sm
+        p-4
 
         bg-red-200
         text-red-700
@@ -63,7 +60,7 @@ button[type="button"],
 button[type="submit"] {
     @apply
         px-4
-        py-1
+        py-2
         text-sm
         rounded-sm
         border
@@ -109,7 +106,7 @@ button[type="submit"].btn.btn-primary {
     block
     cursor-pointer
     px-4
-    py-1.5
+    py-2.5
     rounded-none
     text-sm
     w-full
@@ -118,12 +115,14 @@ button[type="submit"].btn.btn-primary {
     border-r-transparent
 
     text-slate-500
+    hover:bg-slate-100
     hover:border-slate-300
     hover:text-black
 
     dark:border-r-2
     dark:bg-slate-800
     dark:text-slate-400
+    dark:hover:bg-slate-700
     dark:hover:border-r-slate-500
     dark:hover:text-slate-300 
 }

@@ -104,8 +104,11 @@
 
             const resBody = await res.json();
 
-            if (res.status == 200) {
+            if (res.status === 200) {
                 this.#success = resBody.message + ` Please <a class="underline" href="/trainer/sign-in">Log In</a>`;
+                // Attach cookie and move user into portal
+                document.cookie = `session=${res.headers.get('Authorization')};Max-Age=6000;path=/`;
+                document.location = '/trainer';
             } else {
                 this.#error = resBody.error;
             }

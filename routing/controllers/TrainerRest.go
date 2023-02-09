@@ -111,6 +111,17 @@ func SignUpRest(c *gin.Context) {
 		})
 	}
 
+	// Create jwt token for new sign up
+	signed, err := newJwt(trainer.ID, trainer.Email)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": "Could not obtain new token.",
+		})
+		return
+	}
+	// Attach signed auth token
+	c.Header("Authorization", fmt.Sprintf("Bearer %s", signed))
+
 	c.JSON(200, gin.H{
 		"message": "Sign up was successful.",
 	})
@@ -188,9 +199,25 @@ func SignInRest(c *gin.Context) {
 		return
 	}
 
+	signed, err := newJwt(trainer.ID, body.Email)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": "Could not obtain new token.",
+		})
+		return
+	}
+
+	c.Header("Authorization", fmt.Sprintf("Bearer %s", signed))
+	c.JSON(200, gin.H{
+		"message": "You have been signed in.",
+	})
+}
+
+// newJwt Generate new token with identifying claims and return the signed version
+func newJwt(trainerId uint, email string) (string, error) {
 	claims := TrainerAuthJwtClaims{
-		trainer.ID,
-		body.Email,
+		trainerId,
+		email,
 		jwt.RegisteredClaims{
 			Issuer:    "",
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 2)),
@@ -202,14 +229,8 @@ func SignInRest(c *gin.Context) {
 	signed, err := token.SignedString([]byte(os.Getenv("JWT_SECRET_KEY")))
 	if err != nil {
 		fmt.Println("error while signing jwt key")
-		c.JSON(500, gin.H{
-			"error": "Could not generate your auth token.",
-		})
-		return
+		return "", err
 	}
 
-	c.Header("Authorization", fmt.Sprintf("Bearer %s", signed))
-	c.JSON(200, gin.H{
-		"message": "You have been signed in.",
-	})
+	return signed, nil
 }
