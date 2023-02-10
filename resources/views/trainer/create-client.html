@@ -93,9 +93,8 @@
             });
 
             const resBody = await res.json();
-            // todo - handle
 
-            console.log(resBody);
+            window.EventPipeline.push('client-created', resBody);
         }
 
         #show() {

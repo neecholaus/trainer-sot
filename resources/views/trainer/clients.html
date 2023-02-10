@@ -37,8 +37,12 @@
             ElementHydrator.hydrate(this);
 
             this.#loadPage();
-        }
 
+            // Reload client list whenever a new one is created
+            window.EventPipeline.listen('client-created').then(() => {
+                this.#loadPage();
+            })
+        }
 
         async #loadPage() {
             this.#loading = true;
