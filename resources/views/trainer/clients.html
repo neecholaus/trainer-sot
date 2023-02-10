@@ -38,10 +38,15 @@
 
             this.#loadPage();
 
-            // Reload client list whenever a new one is created
+            this.#listenForCreatedClientEvent();
+        }
+
+        // Reload client list whenever a new one is created
+        #listenForCreatedClientEvent() {
             window.EventPipeline.listen('client-created').then(() => {
                 this.#loadPage();
-            })
+                this.#listenForCreatedClientEvent();
+            });
         }
 
         async #loadPage() {

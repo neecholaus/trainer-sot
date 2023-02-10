@@ -20,7 +20,7 @@ class EventPipeline {
         this.events[to].push(data);
 
         // If listener is waiting for event of same type, hydrate and resolve
-        if (this.listeners.hasOwnProperty(to)) {
+        if (this.listeners.hasOwnProperty(to) && this.listeners[to].length) {
             // Resolve listener
             this.listeners[to][0](data);
 
@@ -50,7 +50,7 @@ class EventPipeline {
 
         return new Promise(resolve => {
             // Check for held event first, and resolve with that if available
-            if (this.events[eventName]) {
+            if (this.events[eventName] && this.events[eventName].length) {
                 resolve(this.events[eventName].shift());
             }
 

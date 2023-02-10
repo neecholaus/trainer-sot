@@ -23,7 +23,8 @@ func ClientListRest(c *gin.Context) {
 	var clients []models.Client
 	_ = db.Db.Model(models.Client{}).
 		Where("trainer_id = ?", trainerId).
-		Limit(10).
+		Order("id desc").
+		Limit(25).
 		Find(&clients)
 
 	c.JSON(http.StatusOK, gin.H{
