@@ -324,6 +324,17 @@ table.table thead th, table.table tbody td {
   color:rgb(148 163 184 / var(--tw-text-opacity))
 }
 
+table.table tbody tr:not(:last-child) td {
+  border-bottom-width:1px;
+  --tw-border-opacity:1;
+  border-color:rgb(226 232 240 / var(--tw-border-opacity))
+}
+
+.dark table.table tbody tr:not(:last-child) td {
+  --tw-border-opacity:1;
+  border-color:rgb(51 65 85 / var(--tw-border-opacity))
+}
+
 table.table thead {
   border-top-left-radius:0.125rem;
   border-top-right-radius:0.125rem
@@ -333,17 +344,19 @@ table.table thead th {
   border-bottom-width:1px;
   --tw-border-opacity:1;
   border-color:rgb(226 232 240 / var(--tw-border-opacity));
+  padding-top:0.5rem;
+  padding-bottom:0.5rem;
   text-align:left;
   font-weight:400;
   --tw-text-opacity:1;
-  color:rgb(148 163 184 / var(--tw-text-opacity))
+  color:rgb(71 85 105 / var(--tw-text-opacity))
 }
 
 .dark table.table thead th {
   --tw-border-opacity:1;
   border-color:rgb(51 65 85 / var(--tw-border-opacity));
   --tw-text-opacity:1;
-  color:rgb(100 116 139 / var(--tw-text-opacity))
+  color:rgb(148 163 184 / var(--tw-text-opacity))
 }
 
 table.table thead tr th:first-child {
@@ -356,7 +369,7 @@ table.table thead th:last-child {
 
 table.table tbody tr:hover td {
   --tw-bg-opacity:1;
-  background-color:rgb(241 245 249 / var(--tw-bg-opacity));
+  background-color:rgb(248 250 252 / var(--tw-bg-opacity));
   --tw-text-opacity:1;
   color:rgb(51 65 85 / var(--tw-text-opacity))
 }
@@ -408,4 +421,33 @@ div.modal-content {
   border-color:rgb(71 85 105 / var(--tw-border-opacity));
   --tw-bg-opacity:1;
   background-color:rgb(30 41 59 / var(--tw-bg-opacity))
+}
+
+/**
+ *
+ *
+ * Text Links
+ *
+ *
+ */
+
+a.link {
+  --tw-text-opacity:1;
+  color:rgb(2 132 199 / var(--tw-text-opacity))
+}
+
+a.link:hover {
+  --tw-text-opacity:1;
+  color:rgb(56 189 248 / var(--tw-text-opacity));
+  text-decoration-line:underline
+}
+
+.dark a.link {
+  --tw-text-opacity:1;
+  color:rgb(2 132 199 / var(--tw-text-opacity))
+}
+
+.dark a.link:hover {
+  --tw-text-opacity:1;
+  color:rgb(14 165 233 / var(--tw-text-opacity))
 }

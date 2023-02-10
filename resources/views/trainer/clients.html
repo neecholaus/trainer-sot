@@ -74,7 +74,7 @@
 
         #buildTableRowFromJson(json) {
             const row = document.createElement('tr');
-            row.innerHTML += `<td>${json.firstName} ${json.lastName}</td>`
+            row.innerHTML += `<td><a href="/trainer/clients/${json.ID}" class="link">${json.firstName} ${json.lastName}</a></td>`
             row.innerHTML += `<td>${json.email}</td>`
             row.innerHTML += `<td>${json.phone}</td>`
             return row;
