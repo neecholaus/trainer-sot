@@ -94,7 +94,17 @@
 
             const resBody = await res.json();
 
+            // handle error
+
+            this.#resetForm();
+
             window.EventPipeline.push('client-created', resBody);
+        }
+
+        #resetForm() {
+            for (let key of Object.keys(this.elements.inputs)) {
+                this.elements.inputs[key].value = '';
+            }
         }
 
         #show() {
