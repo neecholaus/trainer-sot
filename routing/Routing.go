@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func RegisterRoutes(c *gin.Engine) {
+func RegisterRoutes(server *gin.Engine) {
 	// Trainer
-	trainerNonAuthGroup := c.Group("/trainer")
+	trainerNonAuthGroup := server.Group("/trainer")
 	{
 		trainerNonAuthGroup.GET("/sign-up", controllers.SignUp)
 		trainerNonAuthGroup.POST("/sign-up", controllers.SignUpRest)
@@ -16,11 +16,15 @@ func RegisterRoutes(c *gin.Engine) {
 		trainerNonAuthGroup.POST("/sign-in", controllers.SignInRest)
 	}
 	// Trainer Authed
-	trainerAuthGroup := c.Group("/trainer", Auth())
+	trainerAuthGroup := server.Group("/trainer", Auth())
 	{
 		trainerAuthGroup.GET("", controllers.Home)
 		trainerAuthGroup.GET("/clients", controllers.Clients)
 		trainerAuthGroup.GET("/clients/list", controllers.ClientListRest)
 		trainerAuthGroup.POST("/clients", controllers.ClientCreateRest)
 	}
+}
+
+func RegisterTemplates(server *gin.Engine) {
+	server.LoadHTMLGlob("./resources/views/**/*.html")
 }

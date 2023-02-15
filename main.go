@@ -31,7 +31,7 @@ func main() {
 
 	server := gin.Default()
 
-	server.LoadHTMLGlob("./resources/views/**/*.html")
+	// Register public files
 	server.Static("/public", "./resources/public")
 
 	// Db connection ensured on each request
